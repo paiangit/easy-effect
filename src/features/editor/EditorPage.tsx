@@ -1,8 +1,8 @@
-import './EditorPage.less';
+import style from './EditorPage.module.less';
 
 function Editor() {
   return (
-    <div className="editor">Editor</div>
+    <div className={style['editor-page']}>Editor</div>
   );
 }
 

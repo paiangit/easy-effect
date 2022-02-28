@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Navigate, useRoutes } from 'react-router-dom';
 import FullPageLoading from './components/FullPageLoading';
-import './App.less';
 
 const NotFoundPage = lazy(() => import('./features/exceptions/NotFoundPage'));
 const MainLayout = lazy(() => import('./features/home/MainLayout'));

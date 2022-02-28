@@ -1,8 +1,8 @@
-import './FullPage.less';
+import style from './FullPage.module.less';
 
 function FullPage(props) {
   return (
-    <div className="full-page">{props.children}</div>
+    <div className={style['full-page']}>{props.children}</div>
   )
 }
 

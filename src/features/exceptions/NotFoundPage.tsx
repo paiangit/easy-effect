@@ -1,6 +1,8 @@
+import style from './NotFoundPage.module.less';
+
 function NotFoundPage() {
   return (
-    <div>页面未找到</div>
+    <div className={style['not-found-page']}>页面未找到</div>
   );
 }
 
