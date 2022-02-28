@@ -1,24 +1,42 @@
-import logo from './logo.svg';
+import { lazy, Suspense } from 'react';
+import { Navigate, useRoutes } from 'react-router-dom';
+import FullPageLoading from './components/FullPageLoading';
 import './App.less';
 
+const NotFoundPage = lazy(() => import('./features/exceptions/NotFoundPage'));
+const MainLayout = lazy(() => import('./features/home/MainLayout'));
+const MainPage = lazy(() => import('./features/home/MainPage'));
+const EditorPage = lazy(() => import('./features/editor/EditorPage'));
+
 function App() {
+  const routes = {
+    path: '/',
+    element: <MainLayout/>,
+    children: [
+      {
+        path: '*',
+        element: <Navigate to="/404"/>,
+      },
+      {
+        path: '/',
+        element: <MainPage/>,
+      },
+      {
+        path: '404',
+        element: <NotFoundPage/>,
+      },
+      {
+        path: 'editor',
+        element: <EditorPage/>,
+      },
+    ],
+  };
+  const routing = useRoutes([routes])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={<FullPageLoading/>}>
+      { routing }
+    </Suspense>
   );
 }
 
