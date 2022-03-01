@@ -3,13 +3,53 @@
 body {
   margin: 0;
 }
-ul, p {
+
+ul,
+p {
   margin: 0;
   padding: 0;
 }
+
 h2 {
   margin: 0;
 }
+
 li {
   list-style-type: none;
 }
+
+
+// 滚动条整体部分
+::-webkit-scrollbar {
+  background: none;
+  width: 5px;
+}
+
+// 滚动条两端的按钮
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+// 外层轨道
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+//内层轨道，滚动条中间部分（除去）
+::-webkit-scrollbar-track-piece {
+  display: none;
+}
+
+// 滚动条里面可以拖动的那个
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, .1);
+  border-radius: 5px;
+}
+
+// 边角
+::-webkit-scrollbar-corner {
+  display: none;
+}
+
+// 定义右下角拖动块的样式
+::-webkit-resizer {}

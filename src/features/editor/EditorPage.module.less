@@ -1,3 +1,59 @@
-.editor-page {
+@import '~styles/index.less';
 
+.editor-page {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #1a1c1e;
+
+  .logo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    color: rgba(255, 255, 255, .8);
+    &:before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      content: "";
+      width: 48px;
+      height: 50px;
+      background-color: #111;
+    }
+  }
+  :global(.anticon-thunderbolt) {
+    position: relative;
+    z-index: 1;
+    left: 15px;
+    top: 13px;
+    margin-right: 20px;
+    margin-top: 1px;
+    font-size: 22px;
+    color: #ff0033;
+  }
+  .text {
+    margin-left: 25px;
+    margin-top: 12px;
+    font-size: 16px;
+  }
+}
+
+.header {
+  text-align: right;
+  padding: 4px;
+  background-color: #4a4a4a;
+
+  :global(.ant-btn) {
+    margin: 5px;
+  }
+}
+
+.body {
+  display: flex;
+  height: calc(100% - 48px);
 }

@@ -1,0 +1,41 @@
+@import '~styles/index.less';
+
+@width: 200px;
+@padding: 12px;
+@space: 8px;
+@border: 1px;
+
+.left-panel {
+  box-sizing: border-box;
+  height: 100%;
+  width: @width;
+  background-color: #222328;
+  font-size: 0;
+  padding: @padding;
+}
+.left-panel-item {
+  display: inline-block;
+  &:nth-child(2n+1) {
+    .thumbnail {
+      margin-right: (@space / 2);
+    }
+  }
+  &:nth-child(2n) {
+    .thumbnail {
+      margin-left: (@space / 2);
+    }
+  }
+  &:hover{
+    .thumbnail {
+      border: @border solid rgba(255, 0, 0, 0.5);
+    }
+  }
+}
+.thumbnail {
+  height: ((@width - @border * 4 - @padding * 2 - @space) / 2);
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-bottom: @space;
+  border-radius: @border-radius-base;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}

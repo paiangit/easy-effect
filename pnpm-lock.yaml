@@ -17,6 +17,7 @@ specifiers:
   react-dom: ^17.0.2
   react-router-dom: ^6.2.1
   react-scripts: 5.0.0
+  react-window: ^1.8.6
   typescript: ^4.5.5
   web-vitals: ^2.1.4
 
@@ -30,6 +31,7 @@ dependencies:
   react-dom: 17.0.2_react@17.0.2
   react-router-dom: 6.2.1_react-dom@17.0.2+react@17.0.2
   react-scripts: 5.0.0_react@17.0.2+typescript@4.5.5
+  react-window: 1.8.6_react-dom@17.0.2+react@17.0.2
   web-vitals: 2.1.4
 
 devDependencies:
@@ -38,6 +40,7 @@ devDependencies:
   '@types/node': 17.0.21
   '@types/react': 17.0.39
   '@types/react-dom': 17.0.11
+  craco-alias: 3.0.1
   craco-less: 2.0.0_66b49c99af659d7c23050d0db8706453
   typescript: 4.5.5
 
@@ -3685,6 +3688,10 @@ packages:
       path-type: 4.0.0
       yaml: 1.10.2
 
+  /craco-alias/3.0.1:
+    resolution: {integrity: sha512-N+Qaf/Gr/f3o5ZH2TQjMu5NhR9PnT1ZYsfejpNvZPpB0ujdrhsSr4Ct6GVjnV5ostCVquhTKJpIVBKyL9qDQYA==}
+    dev: true
+
   /craco-less/2.0.0_66b49c99af659d7c23050d0db8706453:
     resolution: {integrity: sha512-980mQaZVrC4ZsvOwvud6/AgvW7fLY3mW5m5+gR4sw4krxszgHb+qoRyOjqsYPD0F4oUmQoSiZSrlYY/bFGD9kQ==}
     peerDependencies:
@@ -6594,6 +6601,10 @@ packages:
       fs-monkey: 1.0.3
     dev: false
 
+  /memoize-one/5.2.1:
+    resolution: {integrity: sha512-zYiwtZUcYyXKo/np96AGZAckk+FWWsUdJ3cHGGmld7+AhvcWmQyGCYUh1hc4Q/pkOhb65dQR/pqCyK0cOaHz4Q==}
+    dev: false
+
   /memoize-one/6.0.0:
     resolution: {integrity: sha512-rkpe71W0N0c0Xz6QD0eJETuWAJGnJ9afsl1srmwPrI+yBCkge5EycXXbYRyvL29zZVUWQCY7InPRCv3GDXuZNw==}
     dev: false
@@ -8699,6 +8710,19 @@ packages:
       - webpack-cli
       - webpack-hot-middleware
       - webpack-plugin-serve
+    dev: false
+
+  /react-window/1.8.6_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-8VwEEYyjz6DCnGBsd+MgkD0KJ2/OXFULyDtorIiTz+QzwoP94tBoA7CnbtyXMm+cCeAUER5KJcPtWl9cpKbOBg==}
+    engines: {node: '>8.0.0'}
+    peerDependencies:
+      react: ^15.0.0 || ^16.0.0 || ^17.0.0
+      react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0
+    dependencies:
+      '@babel/runtime': 7.17.2
+      memoize-one: 5.2.1
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
     dev: false
 
   /react/17.0.2:
