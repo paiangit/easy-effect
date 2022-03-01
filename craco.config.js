@@ -1,4 +1,5 @@
 const CracoLessPlugin = require('craco-less');
+const CracoAliasPlugin = require('craco-alias');
 const path = require('path/posix');
 
 module.exports = {
@@ -27,6 +28,14 @@ module.exports = {
           }
         }
       },
+    },
+    {
+      plugin: CracoAliasPlugin,
+      options: {
+        source: 'tsconfig',
+        baseUrl: './src',
+        tsConfigPath: '.tsconfig.path.json',
+      }
     },
   ],
 }
