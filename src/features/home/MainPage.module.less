@@ -10,26 +10,15 @@
   align-items: center;
   justify-content: center;
 
-  :global(.anticon-thunderbolt) {
-    margin-right: 4px;
-    margin-top: 1px;
-    font-size: 22px;
-    color: #ff0033;
-  }
-
   :global(.anticon-arrow-right) {
-    margin-left: 5px;
+    margin-left: 0px;
   }
 }
 
 .logo {
   position: absolute;
-  display: flex;
-  justify-content: center;
   left: 30px;
   top: 20px;
-  font-size: 20px;
-  color: rgba(255, 255, 255, .8);
 }
 
 .brief {
@@ -47,15 +36,13 @@
 
 .button {
   margin-top: 50px;
-  display: block;
-  width: 120px;
+  width: 160px;
+  height: 46px;
   padding: 12px 20px;
-  background-color: #d3022d;
-  text-align: center;
-  text-decoration: none;
   line-height: 20px;
   font-size: 20px;
-  border-radius: 1px;
-  color: #fff;
-  cursor: pointer;
+}
+
+:global(.anticon-arrow-right) {
+  margin-left: 5px!important;
 }
