@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { ReactNode } from 'react';
-import AppProviders from '../../../context/AppProviders';
+import AppProviders from '~context/AppProviders';
 import MainPage from '../MainPage';
 
 const renderPage = (ui: ReactNode, { route = '/' } = {}) => {
