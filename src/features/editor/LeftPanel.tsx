@@ -1,16 +1,32 @@
+import { useRef, useState } from 'react';
 import { FixedSizeGrid as Grid } from 'react-window';
-import useWrapperHeight from '../../hooks/useWrapperHeight';
+import { debounce } from 'lodash';
+import useWrapperSize from '~hooks/useWrapperSize';
+import lottiePlayer from '~utils/lottiePlayer';
+import fetchAndPlayLottie from '~utils/fetchAndPlayLottie';
 import style from './LeftPanel.module.less';
 
 export default function LeftPanel(props) {
+  const [ previewVisible, setPreviewVisible ] = useState(false);
+  const { height, wrapperRef } = useWrapperSize();
+  const previewRef = useRef();
   const rowCount = Math.ceil(props.data.length / 2);
-  const { height, wrapperRef } = useWrapperHeight();
+  const lottieName = 'preview-template';
 
-  function handleDragStart(id: number) {
-    return (e, id) => {
-      console.log(e, id);
-    }
-  }
+  const destroyLottie = () => lottiePlayer.destroy(lottieName);
+
+  const onMouseEnter = (lottieUrl) => {
+    return debounce(async () => {
+      destroyLottie();
+      await fetchAndPlayLottie(lottieUrl, { container: previewRef.current, name: lottieName });
+      setPreviewVisible(true);
+    }, 20);
+  };
+
+  const removePreview = debounce(() => {
+    destroyLottie();
+    setPreviewVisible(false);
+  }, 20);
 
   function handleDragEnd(id: number) {
     return (e, id) => {
@@ -28,6 +44,8 @@ export default function LeftPanel(props) {
         className={style['left-panel-item']}
         style={cellStyle}
         draggable={true}
+        onMouseEnter={onMouseEnter(props.data[index].lottieUrl)}
+        onMouseLeave={removePreview}
       >
         <div
           className={style.thumbnail}
@@ -50,6 +68,7 @@ export default function LeftPanel(props) {
       >
         {Cell}
       </Grid>
+      <div className={style.preview} ref={previewRef} style={{display: `${previewVisible ? 'block': 'none'}`}}></div>
     </div>
   );
 }

@@ -32,13 +32,13 @@ export default function EditorPage() {
   };
 
   return (
-    <div className={ style['editor-page'] }>
-      <div className={ style.header }>
+    <div className={style['editor-page']}>
+      <div className={style.header}>
         <div className={style.logo}><ThunderboltFilled /><span className={style.text}>动画编辑</span></div>
-        <Button onClick={ handlePreview }>预览</Button>
-        <Button onClick={ handleSave } type="primary">保存</Button>
+        <Button onClick={handlePreview}>预览</Button>
+        <Button onClick={handleSave} type="primary">保存</Button>
       </div>
-      <div className={ style.body }>
+      <div className={style.body}>
         <LeftArea></LeftArea>
         <CenterArea></CenterArea>
         <RightArea></RightArea>
