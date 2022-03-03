@@ -37,12 +37,9 @@ export default function LeftPanel(props) {
   };
 
   const onMouseMove = useCallback((e) => {
-    console.log('mousemove');
     const x = e.clientX;
     const y = e.clientY;
     const { left, top, width, height } = wrapperRef.current.getBoundingClientRect();
-    console.log(x, y, left, top, width, height);
-
     if (x > (left + width) || x < left || y > (top + height) || y < top) {
       removePreview();
     }

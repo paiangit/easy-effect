@@ -1,4 +1,4 @@
-import { AnimationConfigWithData } from 'lottie-web';
+import { AnimationConfigWithData, AnimationItem } from 'lottie-web';
 import http from './http';
 import lottiePlayer from './lottiePlayer';
 import generateUUID from './generateUUID';
@@ -22,8 +22,8 @@ export function playAnimation({
   }, useSubFrames === undefined ? false : useSubFrames, speed || 1);
 };
 
-export default function fetchAndPlayLottie(lottieUrl, options: AnimationConfigWithData & { useSubFrames?: boolean, speed?: number }) {
-  return new Promise((resolve, reject) => {
+export default function fetchAndPlayLottie(lottieUrl: string, options: AnimationConfigWithData & { useSubFrames?: boolean, speed?: number }) {
+  return new Promise<{animation: AnimationItem, animationData: any}>((resolve, reject) => {
     http(lottieUrl)
       .then(animationData => {
         const animation = playAnimation({
