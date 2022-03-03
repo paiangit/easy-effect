@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { FixedSizeGrid as Grid } from 'react-window';
 import { debounce } from 'lodash';
 import useWrapperSize from '~hooks/useWrapperSize';
@@ -16,6 +16,7 @@ export default function LeftPanel(props) {
   const destroyLottie = () => lottiePlayer.destroy(lottieName);
 
   const onMouseEnter = (lottieUrl) => {
+    // console.log('mouseenter');
     return debounce(async () => {
       destroyLottie();
       await fetchAndPlayLottie(lottieUrl, { container: previewRef.current, name: lottieName });
@@ -24,6 +25,7 @@ export default function LeftPanel(props) {
   };
 
   const removePreview = debounce(() => {
+    // console.log('removePreview');
     destroyLottie();
     setPreviewVisible(false);
   }, 20);
@@ -33,6 +35,28 @@ export default function LeftPanel(props) {
       e.dataTransfer.setData('lottieUrl', lottieUrl);
     };
   };
+
+  const onMouseMove = useCallback((e) => {
+    console.log('mousemove');
+    const x = e.clientX;
+    const y = e.clientY;
+    const { left, top, width, height } = wrapperRef.current.getBoundingClientRect();
+    console.log(x, y, left, top, width, height);
+
+    if (x > (left + width) || x < left || y > (top + height) || y < top) {
+      removePreview();
+    }
+  }, [removePreview, wrapperRef]);
+  // fix bug:
+  // when switch preview extremely fastly,
+  // the last preview animation not be destroyed because loading lottie data is async
+  useEffect(() => {
+    window.addEventListener('mousemove', onMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', onMouseMove);
+    }
+  }, [onMouseMove]);
 
   const Cell = (cellProps) => {
     const { rowIndex, columnIndex } = cellProps;

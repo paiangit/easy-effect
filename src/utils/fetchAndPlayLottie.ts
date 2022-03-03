@@ -12,7 +12,7 @@ export function playAnimation({
   useSubFrames,
   speed,
 }: AnimationConfigWithData & { useSubFrames?: boolean, speed?: number }) {
-  lottiePlayer.startOneAnimation({
+  return lottiePlayer.startOneAnimation({
     animationData,
     container,
     renderer: 'svg',
