@@ -28,11 +28,11 @@ export default function LeftPanel(props) {
     setPreviewVisible(false);
   }, 20);
 
-  function handleDragEnd(id: number) {
-    return (e, id) => {
-      console.log(e, id);
-    }
-  }
+  const onDragStart = (lottieUrl) => {
+    return (e) => {
+      e.dataTransfer.setData('lottieUrl', lottieUrl);
+    };
+  };
 
   const Cell = (cellProps) => {
     const { rowIndex, columnIndex } = cellProps;
@@ -46,6 +46,8 @@ export default function LeftPanel(props) {
         draggable={true}
         onMouseEnter={onMouseEnter(props.data[index].lottieUrl)}
         onMouseLeave={removePreview}
+        onDragStart={onDragStart(props.data[index].lottieUrl)}
+        onDragEnd={removePreview}
       >
         <div
           className={style.thumbnail}

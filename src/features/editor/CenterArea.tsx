@@ -1,5 +1,6 @@
 // import { Button } from 'antd';
 // import { DesktopOutlined, MobileOutlined } from '@ant-design/icons';
+import Simulator from './Simulator';
 import style from './CenterArea.module.less';
 
 export default function CenterArea() {
@@ -9,9 +10,10 @@ export default function CenterArea() {
         <Button size="small" type="text"><DesktopOutlined /></Button>
         <Button size="small" type="text"><MobileOutlined /></Button>
       </div> */}
-      <div className={ style['simulator'] }>
-        <div className={ style['simulator-content'] }>
-          <iframe title="设计器" className={ style['simulator-canvas'] }></iframe>
+      <div className={ style['canvas'] }>
+        <div className={ style['canvas-content'] }>
+          <Simulator/>
+          {/* <iframe title="设计器" className={ style['simulator'] }></iframe> */}
         </div>
       </div>
     </div>
