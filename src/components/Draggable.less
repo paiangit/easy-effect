@@ -2,12 +2,17 @@
 @rotate-size: 16px;
 @border-size: 1px;
 
-.draggable {
+.draggable {}
 
+// 选中时
+.selected {
+  .handle {
+    display: inline-block;
+  }
 }
+
 .draggable-item {
   position: absolute;
-  background-color: #ccc;
   box-sizing: border-box;
   cursor: move;
   word-break: break-all;
@@ -25,9 +30,9 @@
 }
 
 .handle {
+  display: none;
   position: absolute;
   box-sizing: border-box;
-  display: inline-block;
   width: @handle-size;
   height: @handle-size;
   background: #fff;
@@ -90,7 +95,7 @@
 
 .handle-rotate {
   // 暂时先隐藏旋转按钮
-  display: none;
+  display: none!important;
   cursor: pointer;
   position: absolute;
   left: 50%;

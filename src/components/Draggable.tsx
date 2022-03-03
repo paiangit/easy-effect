@@ -146,27 +146,27 @@ const Draggable: FC<DraggableProps> = ({
         // 先计算下元素的中心点, x，y 作为坐标原点
         const x = left + itemStyle.width / 2 + itemStyle.left;
         const y = top + itemStyle.height / 2 + itemStyle.top;
-        const deltaX = position.x - x;
-        const deltaY = position.y - y;
         let angle = getTanDeg((position.y - y) / (position.x - x));
 
-        if (deltaX < 0 && deltaY < 0) {
-          console.log(4)
-          // 左上角，第4象限
-          angle = -angle;
-        } else if (deltaX < 0 && deltaY > 0) {
-          console.log(3)
-          // 左下角，第3象限
-          angle = -(180 - angle)
-        } else if (deltaX > 0 && deltaY < 0) {
-          console.log(1)
-          // 右上角，第1象限
-          angle = angle;
-        } else if (deltaX > 0 && deltaY > 0) {
-          console.log(2)
-          // 右下角，第2象限
-          angle = 180 - angle;
-        }
+        // const deltaX = position.x - x;
+        // const deltaY = position.y - y;
+        // if (deltaX < 0 && deltaY < 0) {
+        //   console.log(4)
+        //   // 左上角，第4象限
+        //   angle = -angle;
+        // } else if (deltaX < 0 && deltaY > 0) {
+        //   console.log(3)
+        //   // 左下角，第3象限
+        //   angle = -(180 - angle)
+        // } else if (deltaX > 0 && deltaY < 0) {
+        //   console.log(1)
+        //   // 右上角，第1象限
+        //   angle = angle;
+        // } else if (deltaX > 0 && deltaY > 0) {
+        //   console.log(2)
+        //   // 右下角，第2象限
+        //   angle = 180 - angle;
+        // }
 
         // 运用高中的三角函数
         itemStyle.transform = `rotate(${angle}deg)`;
@@ -226,27 +226,63 @@ const Draggable: FC<DraggableProps> = ({
 
   useEffect(() => {
     dragContainer.current = (typeof container === 'object' ? container : document.querySelector(container)) as HTMLElement;
-    debugger;
     // 容器没有定位的时候，添加定位
     if (['relative', 'absolute', 'fixed'].indexOf(dragContainer.current.style.position) < 0) {
       dragContainer.current.style.position = 'relative';
     }
-    // 解决拖拽后，鼠标不在.draggable元素面积范围的时候，拖拽标识还在的问题
-    window.addEventListener('mouseup', (e) => {
+  }, [container, onMouseMove, onMouseUp]);
+
+  // 解决拖拽后，鼠标不在.draggable元素面积范围的时候，拖拽标识还在的问题
+  useEffect(() => {
+    const handleMouseUp = (e) => {
       if (isMouseDown.current) {
         onMouseUp();
       }
-    });
-    // 解决拖拽时，鼠标不在.draggable元素面积范围的时候，拖不动的问题
-    window.addEventListener('mousemove', (e) => {
+    };
+    window.addEventListener('mouseup', handleMouseUp);
+
+    return () => {
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [container, onMouseMove, onMouseUp]);
+
+  // 解决拖拽时，鼠标不在.draggable元素面积范围的时候，拖不动的问题
+  useEffect(() => {
+    const handleMouseMove = (e) => {
       if (isMouseDown.current) {
         onMouseMove(e);
       }
-    });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    }
+  }, [container, onMouseMove, onMouseUp]);
+
+  // 点击
+  const [selected, setSelected] = useState<boolean>(false);
+  const onClick = (e) => {
+    e.stopPropagation();
+    setSelected(true);
+  };
+
+  // 点击其它位置取消选中
+  useEffect(() => {
+    const handleClick = (e) => {
+      e.stopPropagation();
+
+      setSelected(false);
+    };
+    window.addEventListener('click', handleClick);
+
+    return () => {
+      window.removeEventListener('click', handleClick);
+    }
   }, [container, onMouseMove, onMouseUp]);
 
   return (
-    <div className="draggable">
+    <div className={`draggable ${selected ? 'selected' : ''}`} onClick={onClick}>
       {
         canDrag ?
           <div
