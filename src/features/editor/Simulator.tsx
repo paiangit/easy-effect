@@ -1,14 +1,15 @@
-import { useRef, FC } from 'react';
+import { useRef, FC, useEffect, useCallback, useState } from 'react';
 import fetchAndPlayLottie from '../../utils/fetchAndPlayLottie';
-// import useWrapperSize from '../../hooks/useWrapperSize';
 import Draggable from '../../components/Draggable';
 import LottiePlayerController from '../../components/LottiePlayController';
 import { useAnimation } from '../../context/AnimationContext';
 import style from './Simulator.module.less';
 
 const Simulator: FC<{}> = () => {
-  const animationRef = useRef();
-  const {animation, setAnimation, animationStyle, setAnimationStyle} = useAnimation();
+  const animationRef = useRef<HTMLDivElement>();
+  const wrapperRef = useRef<HTMLDivElement>();
+  const {animation, setAnimation, animationStyle, setAnimationStyle, backgroundConfig } = useAnimation();
+  const [backgroundTransform, setBackgroundTransform] = useState('');
   const lottieName = 'edit-lottie';
 
   const onDragOver = (e) => {
@@ -23,12 +24,39 @@ const Simulator: FC<{}> = () => {
     res.animation && setAnimation(res.animation);
   };
 
-  // const { width, wrapperRef } = useWrapperSize();
+  // const initBackgroundTransform = useCallback(() => {
+  //   const { width, height } = wrapperRef.current.parentElement.getBoundingClientRect();
+  //   const containerAspectRatio = width / height;
+  //   const currentWidth = backgroundConfig.width;
+  //   const currentHeight = backgroundConfig.height;
+  //   const currentAspectRatio = currentWidth / currentHeight;
+
+  //   let destScale;
+  //   if (containerAspectRatio > currentAspectRatio) {
+  //     destScale = height / currentHeight;
+  //   } else {
+  //     destScale = width / currentWidth;
+  //   }
+  //   setBackgroundTransform(`scale(${destScale}) translate(-50%, -50%)`);
+  // }, [backgroundConfig.height, backgroundConfig.width, setBackgroundTransform]);
+
+  // // 初始化画布大小
+  // useEffect(() => {
+  //   initBackgroundTransform();
+  // }, [initBackgroundTransform]);
+
+  // useEffect(() => {
+  //   window.addEventListener('resize', initBackgroundTransform);
+
+  //   return () => {
+  //     window.removeEventListener('resize', initBackgroundTransform);
+  //   }
+  // }, [initBackgroundTransform]);
 
   return (
-    <div className={style.simulator} onDragOver={onDragOver} onDrop={onDrop} id="box">
+    <div ref={wrapperRef} style={{...backgroundConfig, transform: backgroundTransform}} className={style.simulator} onDragOver={onDragOver} onDrop={onDrop}>
       <Draggable
-        container="#box"
+        container={wrapperRef.current}
         animationStyle={animationStyle}
         setAnimationStyle={setAnimationStyle}
         canDrag={true}

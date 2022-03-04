@@ -1,17 +1,23 @@
-import React, {ReactNode, useState} from 'react';
+import React, {ReactNode, useState } from 'react';
 import { AnimationItem } from 'lottie-web';
 import { AnimationStyle } from '../components/Draggable';
 
 export type Animation = AnimationItem & {animationData?: any, wrapper?: HTMLElement};
+export interface BackGroundConfig {
+  width: number;
+  height: number;
+  backgroundColor: string;
+}
 
 const AnimationContext = React.createContext<
-  | {
+  {
     animation: Animation;
     setAnimation: (animation: Animation) => void;
     animationStyle: AnimationStyle;
     setAnimationStyle: (animationStyle: AnimationStyle) => void;
-  }
-  | undefined
+    backgroundConfig: BackGroundConfig,
+    setBackgroundConfig: (backgroundConfig: BackGroundConfig) => void;
+  } | undefined
 >(undefined);
 
 AnimationContext.displayName = 'AnimationContext';
@@ -26,9 +32,21 @@ export const AnimationProvider = ({ children }: { children: ReactNode }) => {
     zIndex: 1, // 层级
     transform: '', // 变换（用于旋转）
   });
+  const [backgroundConfig, setBackgroundConfig] = useState<BackGroundConfig>({
+    width: 750, // 背景宽
+    height: 750, // 背景高
+    backgroundColor: '#414141', // 背景色
+  });
 
   return (
-    <AnimationContext.Provider children={children} value={{animation, setAnimation, animationStyle, setAnimationStyle}}/>
+    <AnimationContext.Provider children={children} value={{
+      animation,
+      setAnimation, // 设置画板区域的动画实例
+      animationStyle,
+      setAnimationStyle, // 设置画板区包裹动画的可拖拽容器的样式（包括位置、大小、旋转角度等）
+      backgroundConfig,
+      setBackgroundConfig, // 设置动画背景样式（包括大小、背景色等）
+    }}/>
   );
 }
 
