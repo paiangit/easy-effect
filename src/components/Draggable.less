@@ -37,9 +37,9 @@
   height: @handle-size;
   background: #fff;
   // 注意禁止鼠标选中控制点元素，不然拖拽事件可能会因此被中断
+  user-select: none;
   margin-top: (-@handle-size/2) !important;
   margin-left: (-@handle-size/2) !important;
-  user-select: none;
   border: @border-size solid #c0c5cf;
   border-radius: (@rotate-size/2);
   box-shadow: 0 0 2px 0 rgba(86, 90, 98, .2);

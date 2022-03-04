@@ -5,6 +5,7 @@ import CenterArea from './CenterArea';
 import RightArea from './RightArea';
 import { ThunderboltFilled } from '@ant-design/icons';
 import useDocumentTitle from '~hooks/useDocumentTitle';
+import { AnimationProvider } from '../../context/AnimationContext';
 import style from './EditorPage.module.less';
 
 export default function EditorPage() {
@@ -32,17 +33,19 @@ export default function EditorPage() {
   };
 
   return (
-    <div className={style['editor-page']}>
-      <div className={style.header}>
-        <div className={style.logo}><ThunderboltFilled /><span className={style.text}>动画编辑</span></div>
-        <Button onClick={handlePreview}>预览</Button>
-        <Button onClick={handleSave} type="primary">保存</Button>
+    <AnimationProvider>
+      <div className={style['editor-page']}>
+        <div className={style.header}>
+          <div className={style.logo}><ThunderboltFilled /><span className={style.text}>动画编辑</span></div>
+          <Button onClick={handlePreview}>预览</Button>
+          <Button onClick={handleSave} type="primary">保存</Button>
+        </div>
+        <div className={style.body}>
+          <LeftArea></LeftArea>
+          <CenterArea></CenterArea>
+          <RightArea></RightArea>
+        </div>
       </div>
-      <div className={style.body}>
-        <LeftArea></LeftArea>
-        <CenterArea></CenterArea>
-        <RightArea></RightArea>
-      </div>
-    </div>
+    </AnimationProvider>
   );
 }

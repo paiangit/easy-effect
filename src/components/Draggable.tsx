@@ -2,13 +2,20 @@ import React, { FC, ReactNode, useState, useRef, useEffect, useCallback, memo } 
 import classnames from 'classnames';
 import './Draggable.less';
 
+export interface AnimationStyle {
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+  zIndex: number;
+  transform: string;
+}
+
 export interface DraggableProps {
   container: HTMLElement | string; // 画布元素或者画布id
   canDrag?: boolean; // 是否禁止拖拽
-  position: [number, number]; // 画布初始化坐标
-  width: number; // 元素宽
-  height: number; // 元素高
-  zIndex?: number; // 层级
+  animationStyle: AnimationStyle,
+  setAnimationStyle: (animationStyle: AnimationStyle) => void,
   onDragStart?: (params) => void; // 鼠标拖拽开始
   onDragStop?: (params) => void; // 鼠标拖拽结束
   children: ReactNode;
@@ -22,36 +29,20 @@ interface Position {
   [name: string]: any;
 }
 
-interface itemStyle {
-  left: number;
-  top: number;
-  width: number;
-  height: number;
-  transform: string;
-}
-
 // 操作手柄
 const handles = ['east', 'west', 'south', 'north', 'north-east', 'north-west', 'south-east', 'south-west', 'rotate'] as const;
 type HandleType = (typeof handles[number]) | 'move';
 
 const Draggable: FC<DraggableProps> = ({
   container = document.body,
-  position = [0, 0],
-  width = 100,
-  height = 100,
-  zIndex = 1,
+  animationStyle,
+  setAnimationStyle,
   canDrag = true,
   onDragStart,
   onDragStop,
   children,
 }) => {
-  const [itemStyle, setItemStyle] = useState({
-    left: position[0],
-    top: position[1],
-    width,
-    height,
-    zIndex,
-  });
+
 
   const dragContainer = useRef<HTMLElement | null>();
 
@@ -79,7 +70,7 @@ const Draggable: FC<DraggableProps> = ({
     originPosition: Position, // 鼠标按下时所记录的坐标
     position: { x: number, y: number },
   ) => {
-    const itemStyle: Partial<itemStyle> = {
+    const itemStyle: Partial<AnimationStyle> = {
       ...originPosition,
     };
 
@@ -198,12 +189,12 @@ const Draggable: FC<DraggableProps> = ({
     const cY = e.clientY; // clientX 相对于可视化区域
 
     originPosition.current = {
-      ...itemStyle,
+      ...animationStyle,
       cX, cY
     };
 
     onDragStart && onDragStart(originPosition.current);
-  }, [itemStyle, onDragStart])
+  }, [animationStyle, onDragStart])
 
   // 鼠标移动
   const onMouseMove = useCallback((e) => {
@@ -213,15 +204,15 @@ const Draggable: FC<DraggableProps> = ({
     if (!isMouseDown.current) return;
 
     const newStyle = getItemStyle(handleType.current, originPosition.current, { x: e.clientX, y: e.clientY });
-    setItemStyle(newStyle as any);
-  }, [getItemStyle]);
+    setAnimationStyle(newStyle as any);
+  }, [getItemStyle, setAnimationStyle]);
 
   // 鼠标抬起
   const onMouseUp = useCallback(() => {
     // console.log('mouseup');
 
     isMouseDown.current = false;
-    onDragStop && onDragStop(getItemStyle)
+    onDragStop && onDragStop(getItemStyle);
   }, [getItemStyle, onDragStop]);
 
   useEffect(() => {
@@ -287,7 +278,7 @@ const Draggable: FC<DraggableProps> = ({
         canDrag ?
           <div
             className="draggable-item"
-            style={itemStyle}
+            style={animationStyle}
             onMouseDown={(e) => onMouseDown('move', e)}
             onMouseMove={onMouseMove}
             onMouseUp={onMouseUp}
@@ -306,7 +297,7 @@ const Draggable: FC<DraggableProps> = ({
             }
           </div>
           :
-          <div className="draggable-item" style={itemStyle}>{children}</div>
+          <div className="draggable-item" style={animationStyle}>{children}</div>
       }
     </div>
   );

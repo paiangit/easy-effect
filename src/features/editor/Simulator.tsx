@@ -1,14 +1,14 @@
-import { useRef, FC, useState } from 'react';
-import { AnimationItem } from 'lottie-web';
+import { useRef, FC } from 'react';
 import fetchAndPlayLottie from '../../utils/fetchAndPlayLottie';
 // import useWrapperSize from '../../hooks/useWrapperSize';
 import Draggable from '../../components/Draggable';
 import LottiePlayerController from '../../components/LottiePlayController';
+import { useAnimation } from '../../context/AnimationContext';
 import style from './Simulator.module.less';
 
 const Simulator: FC<{}> = () => {
   const animationRef = useRef();
-  const [currentAnimation, setCurrentAnimation] = useState<AnimationItem>();
+  const {animation, setAnimation, animationStyle, setAnimationStyle} = useAnimation();
   const lottieName = 'edit-lottie';
 
   const onDragOver = (e) => {
@@ -20,7 +20,7 @@ const Simulator: FC<{}> = () => {
     const lottieUrl = e.dataTransfer.getData('lottieUrl');
     if (!lottieUrl) return;
     const res = await fetchAndPlayLottie(lottieUrl, { container: animationRef.current, autoplay: false, name: lottieName });
-    res.animation && setCurrentAnimation(res.animation);
+    res.animation && setAnimation(res.animation);
   };
 
   // const { width, wrapperRef } = useWrapperSize();
@@ -29,14 +29,13 @@ const Simulator: FC<{}> = () => {
     <div className={style.simulator} onDragOver={onDragOver} onDrop={onDrop} id="box">
       <Draggable
         container="#box"
-        position={[0, 0]}
-        width={375}
-        height={375}
+        animationStyle={animationStyle}
+        setAnimationStyle={setAnimationStyle}
         canDrag={true}
       >
         <div ref={animationRef} className={style.animation}></div>
       </Draggable>
-      <LottiePlayerController animation={currentAnimation}/>
+      <LottiePlayerController animation={animation}/>
     </div>
   );
 }
