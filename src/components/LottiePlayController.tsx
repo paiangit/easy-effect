@@ -10,7 +10,7 @@ import style from './LottiePlayController.module.less';
 // 速度增减的步长
 const speedStepLength = 0.5;
 
-const LottiePlayController: FC<{ animation: AnimationItem }> = ({ animation }) => {
+const LottiePlayController: FC<{ animation: AnimationItem, width: number }> = ({ animation, width }) => {
   const [isPaused, setIsPaused] = useState<boolean>();
   const [loop, setLoop] = useState<boolean>();
   const [percent, setPercent] = useState<number>(0);
@@ -137,7 +137,7 @@ const LottiePlayController: FC<{ animation: AnimationItem }> = ({ animation }) =
   }
 
   return (
-    <div className={style['lottie-player-controller']}>
+    <div className={style['lottie-player-controller']} style={{ width: width }}>
       <div className={style['percent-wrap']}>
         <Progress percent={percent} showInfo={false} size="small" strokeColor={'#877d7d'} strokeWidth={1}/>
       </div>
@@ -152,7 +152,7 @@ const LottiePlayController: FC<{ animation: AnimationItem }> = ({ animation }) =
           className={style.button}
           onClick={stop}
         ><span title="停止" className={classNames('iconfont', 'icon-tingzhi')} /></Button>
-        <Button
+        {/* <Button
           type="link"
           className={style.button}
           onClick={() => slowDown()}
@@ -161,17 +161,17 @@ const LottiePlayController: FC<{ animation: AnimationItem }> = ({ animation }) =
           type="link"
           className={style.button}
           onClick={() => speedUp()}
-        ><span title="减速" className={classNames('iconfont', 'icon-jiasu')} /></Button>
+        ><span title="减速" className={classNames('iconfont', 'icon-jiasu')} /></Button> */}
         {/* <Button
           type="link"
           className={style.button}
           onClick={() => goToAndStop(20, true)}
         ><span title="跳转" className={classNames('iconfont', 'icon-tiaozhuan')} /></Button> */}
-        <Button
+        {/* <Button
           type="link"
           className={style.button}
           onClick={() => toggleDirection()}
-        ><span title="跳转" className={classNames('iconfont', 'icon-fanxiang')} /></Button>
+        ><span title="反方向" className={classNames('iconfont', 'icon-fanxiang')} /></Button> */}
         <Button
           type="link"
           className={style.button}

@@ -54,16 +54,18 @@ const Simulator: FC<{}> = () => {
   // }, [initBackgroundTransform]);
 
   return (
-    <div ref={wrapperRef} style={{...backgroundConfig, transform: backgroundTransform}} className={style.simulator} onDragOver={onDragOver} onDrop={onDrop}>
-      <Draggable
-        container={wrapperRef.current}
-        animationStyle={animationStyle}
-        setAnimationStyle={setAnimationStyle}
-        canDrag={true}
-      >
-        <div ref={animationRef} className={style.animation}></div>
-      </Draggable>
-      <LottiePlayerController animation={animation}/>
+    <div className={style.simulator}>
+      <div ref={wrapperRef} style={{...backgroundConfig, transform: backgroundTransform}} className={style['simulator-inner']} onDragOver={onDragOver} onDrop={onDrop}>
+        <Draggable
+          container={wrapperRef.current}
+          animationStyle={animationStyle}
+          setAnimationStyle={setAnimationStyle}
+          canDrag={true}
+        >
+          <div ref={animationRef} className={style.animation}></div>
+        </Draggable>
+      </div>
+      <LottiePlayerController animation={animation} width={backgroundConfig.width}/>
     </div>
   );
 }
