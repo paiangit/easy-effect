@@ -108,7 +108,7 @@ const LottiePlayController: FC<{ animation: AnimationItem, width: number }> = ({
   }, [animation]);
 
   const onEnterframe = useCallback((e) => {
-    console.log('enterFrame', e);
+    // console.log('enterFrame', e);
     if (directionRef.current === 1) {
       setPercent(Math.floor(e.currentTime * 100 / e.totalTime));
 

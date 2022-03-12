@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import { Input } from 'antd';
 
 export interface SizeValue {
@@ -15,11 +15,11 @@ const SizeInput: FC<SizeInputProps> = ({ value = {}, onChange }) => {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
 
-  const triggerChange = (changeValue: { width?: number; height?: number }) => {
+  const triggerChange = useCallback((changeValue: { width?: number; height?: number }) => {
     onChange?.({ width, height, ...value, ...changeValue });
-  };
+  }, [height, onChange, value, width]);
 
-  const onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onWidthChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const newWidth = parseInt(e.target.value || '0', 10);
     if (Number.isNaN(width)) return;
 
@@ -28,9 +28,9 @@ const SizeInput: FC<SizeInputProps> = ({ value = {}, onChange }) => {
     }
 
     triggerChange({ width: newWidth });
-  };
+  }, [triggerChange, value, width]);
 
-  const onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onHeightChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const newHeight = parseInt(e.target.value || '0', 10);
     if (Number.isNaN(width)) return;
 
@@ -38,7 +38,7 @@ const SizeInput: FC<SizeInputProps> = ({ value = {}, onChange }) => {
       setHeight(newHeight);
     }
     triggerChange({ height: newHeight });
-  };
+  }, [triggerChange, value, width]);
 
   return (
     <span>

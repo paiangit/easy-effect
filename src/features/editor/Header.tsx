@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { Button } from 'antd';
 // import { useNavigate, useParams } from 'react-router-dom';
 import { ThunderboltFilled } from '@ant-design/icons';
@@ -6,7 +7,7 @@ import zip, { File } from '~utils/zip';
 import generateDemoPage from '~utils/generateDemoPage';
 import style from './Header.module.less';
 
-const Header = () => {
+const Header: FC<{}> = () => {
   const { animation, animationStyle, backgroundConfig } = useAnimation();
 
   // 下面两个hook分别将Url中的appId和pageId转成number类型
@@ -46,6 +47,7 @@ const Header = () => {
     })
     zip(files, animation.animationData?.nm || 'animation-demo');
   };
+
   return (
     <div className={style.header}>
       <div className={style.logo}><a href="/"><ThunderboltFilled /></a><span className={style.text}>Lottie动画编辑</span></div>

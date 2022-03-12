@@ -3,7 +3,8 @@ import {
   FC,
   // useEffect,
   // useCallback,
-  useState
+  useState,
+  useCallback
 } from 'react';
 import fetchAndPlayLottie from '~utils/fetchAndPlayLottie';
 import Draggable from '~components/Draggable';
@@ -21,17 +22,17 @@ const Simulator: FC<{}> = () => {
   ] = useState('');
   const lottieName = 'edit-lottie';
 
-  const onDragOver = (e) => {
+  const onDragOver = useCallback((e) => {
     // 注意：这里必须要preventDefault()，才能走到onDrop()中，相当于是让元素可以被drop到其上
     e.preventDefault();
-  };
+  }, []);
 
-  const onDrop = async (e) => {
+  const onDrop = useCallback(async (e) => {
     const lottieUrl = e.dataTransfer.getData('lottieUrl');
     if (!lottieUrl) return;
     const res = await fetchAndPlayLottie(lottieUrl, { container: animationRef.current, autoplay: false, name: lottieName });
     res.animation && setAnimation(res.animation);
-  };
+  }, [setAnimation]);
 
   // const initBackgroundTransform = useCallback(() => {
   //   const { width, height } = wrapperRef.current.parentElement.getBoundingClientRect();
