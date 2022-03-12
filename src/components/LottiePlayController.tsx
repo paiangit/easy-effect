@@ -8,14 +8,14 @@ import { AnimationItem, AnimationDirection } from 'lottie-web';
 import style from './LottiePlayController.module.less';
 
 // 速度增减的步长
-const speedStepLength = 0.5;
+// const speedStepLength = 0.5;
 
 const LottiePlayController: FC<{ animation: AnimationItem, width: number }> = ({ animation, width }) => {
   const [isPaused, setIsPaused] = useState<boolean>();
   const [loop, setLoop] = useState<boolean>();
   const [percent, setPercent] = useState<number>(0);
   const directionRef = useRef<AnimationDirection>(1);
-  const speedRef = useRef<number>(1);
+  // const speedRef = useRef<number>(1);
 
   // 播放和暂停切换
   const togglePause = () => {
@@ -47,27 +47,27 @@ const LottiePlayController: FC<{ animation: AnimationItem, width: number }> = ({
   // }
 
   // 加速
-  const speedUp = () => {
-    if (!animation) return;
+  // const speedUp = () => {
+  //   if (!animation) return;
 
-    speedRef.current += speedStepLength;
-    animation.setSpeed(speedRef.current);
-  };
+  //   speedRef.current += speedStepLength;
+  //   animation.setSpeed(speedRef.current);
+  // };
 
   // 减速
-  const slowDown = () => {
-    if (!animation) return;
+  // const slowDown = () => {
+  //   if (!animation) return;
 
-    speedRef.current -= speedStepLength;
-    animation.setSpeed(speedRef.current);
-  };
+  //   speedRef.current -= speedStepLength;
+  //   animation.setSpeed(speedRef.current);
+  // };
 
   // 跳转到某位置继续播放
-  const goToAndPlay = (n, isFrame) => {
-    if (!animation) return;
+  // const goToAndPlay = (n, isFrame) => {
+  //   if (!animation) return;
 
-    animation.goToAndPlay(n, isFrame);
-  };
+  //   animation.goToAndPlay(n, isFrame);
+  // };
 
   // 跳转到某位置并停止播放
   const goToAndStop = useCallback((n, isFrame) => {
@@ -77,23 +77,23 @@ const LottiePlayController: FC<{ animation: AnimationItem, width: number }> = ({
     setIsPaused(true);
   }, [animation]);
 
-  const toggleDirection = () => {
-    if (!animation) return;
-    directionRef.current = -directionRef.current as AnimationDirection;
-    animation.setDirection(directionRef.current);
-  };
+  // const toggleDirection = () => {
+  //   if (!animation) return;
+  //   directionRef.current = -directionRef.current as AnimationDirection;
+  //   animation.setDirection(directionRef.current);
+  // };
 
-  // 销毁动画
-  const destroy = () => {
-    if (!animation) return;
+  // // 销毁动画
+  // const destroy = () => {
+  //   if (!animation) return;
 
-    animation.destroy();
-  };
+  //   animation.destroy();
+  // };
 
   // resize动画
-  const resize = () => {
-    animation.resize();
-  };
+  // const resize = () => {
+  //   animation.resize();
+  // };
 
   // 切换是否循环播放标记
   const toggleLoop = () => {

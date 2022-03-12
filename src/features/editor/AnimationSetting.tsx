@@ -83,7 +83,7 @@ const AnimationSetting: FC<{}> = () => {
       });
     });
     return (
-      <Panel header="Lottie动画编辑" key="2" className="site-collapse-custom-panel">
+      <Panel header="动画编辑" key="2" className="site-collapse-custom-panel">
         <Form.Item label="尺寸">
           <SizeInput value={animationStyle} onChange={setAnimationStyle as (value: SizeValue) => void}></SizeInput>
         </Form.Item>

@@ -6,14 +6,14 @@ A WYSIWYG editor for editing Lottie animations easily.
 
 In the project directory, you can run:
 
-### `npm start`
+### `pnpm start`
 
 Runs the app in the development mode.
 
-### `npm test`
+### `pnpm test`
 
 Launches the test runner in the interactive watch mode.
 
-### `npm run build`
+### `pnpm run build`
 
 Builds the app for production to the `build` folder.
