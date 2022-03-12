@@ -2,7 +2,7 @@ import LeftArea from './LeftArea';
 import CenterArea from './CenterArea';
 import RightArea from './RightArea';
 import useDocumentTitle from '~hooks/useDocumentTitle';
-import { AnimationProvider } from '../../context/AnimationContext';
+import { AnimationProvider } from '~context/AnimationContext';
 import Header from './Header';
 import style from './EditorPage.module.less';
 

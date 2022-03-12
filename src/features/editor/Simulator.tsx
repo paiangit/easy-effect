@@ -1,15 +1,24 @@
-import { useRef, FC, useEffect, useCallback, useState } from 'react';
-import fetchAndPlayLottie from '../../utils/fetchAndPlayLottie';
-import Draggable from '../../components/Draggable';
-import LottiePlayerController from '../../components/LottiePlayController';
-import { useAnimation } from '../../context/AnimationContext';
+import {
+  useRef,
+  FC,
+  // useEffect,
+  // useCallback,
+  useState
+} from 'react';
+import fetchAndPlayLottie from '~utils/fetchAndPlayLottie';
+import Draggable from '~components/Draggable';
+import LottiePlayerController from '~components/LottiePlayController';
+import { useAnimation } from '~context/AnimationContext';
 import style from './Simulator.module.less';
 
 const Simulator: FC<{}> = () => {
   const animationRef = useRef<HTMLDivElement>();
   const wrapperRef = useRef<HTMLDivElement>();
   const {animation, setAnimation, animationStyle, setAnimationStyle, backgroundConfig } = useAnimation();
-  const [backgroundTransform, setBackgroundTransform] = useState('');
+  const [
+    backgroundTransform,
+    // setBackgroundTransform,
+  ] = useState('');
   const lottieName = 'edit-lottie';
 
   const onDragOver = (e) => {
@@ -65,7 +74,7 @@ const Simulator: FC<{}> = () => {
           <div ref={animationRef} className={style.animation}></div>
         </Draggable>
       </div>
-      <LottiePlayerController animation={animation} width={backgroundConfig.width}/>
+      <LottiePlayerController animation={animation} width={Math.min(backgroundConfig.width, 700)}/>
     </div>
   );
 }

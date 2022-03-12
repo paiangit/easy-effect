@@ -1,9 +1,9 @@
 import React, { FC, useCallback, useMemo } from 'react';
 import { Form, Input, Collapse, Upload, Button } from 'antd';
 import { CaretRightOutlined, UploadOutlined } from '@ant-design/icons';
-import { useAnimation } from '../../context/AnimationContext';
+import { useAnimation } from '~context/AnimationContext';
 import SizeInput, { SizeValue } from './SizeInput';
-import { playAnimation } from '../../utils/fetchAndPlayLottie';
+import { playAnimation } from '~utils/fetchAndPlayLottie';
 import style from './AnimationSetting.module.less';
 
 const { Panel } = Collapse;
@@ -36,6 +36,7 @@ const AnimationSetting: FC<{}> = () => {
       return new Promise<string>((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
+        // @ts-ignore
         reader.onload = () => resolve(reader.result);
         reader.onerror = (error) => reject(error);
       });

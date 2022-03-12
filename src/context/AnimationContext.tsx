@@ -1,6 +1,6 @@
 import React, {ReactNode, useState } from 'react';
 import { AnimationItem } from 'lottie-web';
-import { AnimationStyle } from '../components/Draggable';
+import { AnimationStyle } from '~components/Draggable';
 
 export type Animation = AnimationItem & {animationData?: any, wrapper?: HTMLElement};
 export interface BackGroundConfig {

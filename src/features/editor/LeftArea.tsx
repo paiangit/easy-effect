@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import LeftAreaNav from './LeftAreaNav';
 import style from './LeftArea.module.less';
 import LeftPanel from './LeftPanel';
-import mockData from './LeftArea.mock.json';
+import mockData from './LeftArea.mock';
 
 export default function LeftArea() {
   const [activeIndex, setActiveIndex] = useState(0);

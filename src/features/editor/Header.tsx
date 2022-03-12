@@ -1,9 +1,9 @@
 import { Button } from 'antd';
 // import { useNavigate, useParams } from 'react-router-dom';
 import { ThunderboltFilled } from '@ant-design/icons';
-import { useAnimation } from '../../context/AnimationContext';
-import zip, { File } from '../../utils/zip';
-import generateDemoPage from '../../utils/generateDemoPage.ts';
+import { useAnimation } from '~context/AnimationContext';
+import zip, { File } from '~utils/zip';
+import generateDemoPage from '~utils/generateDemoPage';
 import style from './Header.module.less';
 
 const Header = () => {

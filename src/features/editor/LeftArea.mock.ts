@@ -1,4 +1,4 @@
-{
+const mockData = {
   "success": true,
   "results": [{
     "spaceId": 1,
@@ -1696,4 +1696,6 @@
       }]
     }]
   }]
-}
+};
+
+export default mockData;

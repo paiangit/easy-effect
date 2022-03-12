@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.path.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "esModuleInterop": true
+  },
+  "include": [
+    "src",
+    "./typings.d.ts"
+  ]
+}

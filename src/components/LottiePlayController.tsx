@@ -128,7 +128,7 @@ const LottiePlayController: FC<{ animation: AnimationItem, width: number }> = ({
     animation && animation.addEventListener('enterFrame', onEnterframe);
     return () => {
       // TODO: 这里有个报错，_cbs为null，待排查处理
-      animation && animation._cbs && animation.removeEventListener('enterFrame');
+      (animation as any)?._cbs && animation.removeEventListener('enterFrame');
     };
   }, [animation, stop, goToAndStop, onEnterframe]);
 
