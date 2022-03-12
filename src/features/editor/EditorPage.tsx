@@ -7,7 +7,7 @@ import Header from './Header';
 import style from './EditorPage.module.less';
 
 export default function EditorPage() {
-  useDocumentTitle('编辑动画');
+  useDocumentTitle('Lottie动画编辑');
 
   return (
     <AnimationProvider>

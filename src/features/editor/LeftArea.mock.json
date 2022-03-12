@@ -67,12 +67,6 @@
             "thumbnail": "https://gw.alipayobjects.com/zos/sage/16c6cdd7-47b0-456f-9893-280b41ca48e0/5c202281-8b7b-4eb0-a4ec-0107ee5c6b47.png",
             "type": "lottie"
           }, {
-            "id": 151,
-            "name": "升级.json",
-            "lottieUrl": "https://gw.alipayobjects.com/os/sage/8a604b43-68c8-43c4-9ddf-26eeba52d232/170b508b-2e3b-43c3-89b0-71d5bfbee78b.json",
-            "thumbnail": "https://gw.alipayobjects.com/zos/sage/ceae1bc4-5c7c-4c91-b314-c20333ac092b/832c1ebe-8a0f-4184-8501-1535141f7595.png",
-            "type": "lottie"
-          }, {
             "id": 153,
             "name": "手机环境.json",
             "lottieUrl": "https://gw.alipayobjects.com/os/sage/33abe5e6-391c-4d64-a66a-7c2ff6b32631/475a2f27-29de-4be5-b368-dc108f07cbe4.json",
@@ -478,12 +472,6 @@
           "thumbnail": "https://gw.alipayobjects.com/zos/sage/ed88cbbc-53d7-489b-a34e-c9d7128b12c2/47c94667-5244-4dd0-8901-a67699b76d9a.png",
           "type": "lottie"
         }, {
-          "id": 24,
-          "name": "拜年男孩.json",
-          "lottieUrl": "https://gw.alipayobjects.com/os/sage/0ad06acd-a0ac-4e86-b767-4d4427f6dbb4/3232137d-d8e1-4c52-9101-d6d772bdee61.json",
-          "thumbnail": "https://gw.alipayobjects.com/zos/sage/abd10d43-4b73-4ce2-8208-68c9d4fbfae1/b989d7c2-8642-43b1-bb7a-8f35ff05c6c7.png",
-          "type": "lottie"
-        }, {
           "id": 22,
           "name": "拿鞭炮.json",
           "lottieUrl": "https://gw.alipayobjects.com/os/sage/703280a7-5848-45a4-9ae0-1a896d0baf0b/9b8ffe26-a8f8-45e6-b4c7-9bd8f509a3ce.json",
@@ -748,12 +736,6 @@
           "name": "星星烟花.json",
           "lottieUrl": "https://gw.alipayobjects.com/os/sage/9f274deb-2fd9-46de-b1a1-d99baee88da9/7d732638-022c-4a24-b777-a2849436ca26.json",
           "thumbnail": "https://gw.alipayobjects.com/zos/sage/d653e8b0-65eb-4bb8-9d8f-ebffc0ac47e2/4037f8d0-0252-4f87-b60f-fe36559508bc.png",
-          "type": "lottie"
-        }, {
-          "id": 102,
-          "name": "提示1.json",
-          "lottieUrl": "https://gw.alipayobjects.com/os/sage/f2ba46aa-dc6d-4772-9a8c-dcf04502073e/6be1f24f-d1fb-4dbd-b922-d38a99c245b6.json",
-          "thumbnail": "https://gw.alipayobjects.com/zos/sage/3b02f80b-40ee-41e8-8a74-299aaec344a4/128f5fae-8037-442c-aef0-7cecf9477d61.png",
           "type": "lottie"
         }, {
           "id": 101,

@@ -1,5 +1,5 @@
 import { Button } from 'antd';
-import { useNavigate, useParams } from 'react-router-dom';
+// import { useNavigate, useParams } from 'react-router-dom';
 import { ThunderboltFilled } from '@ant-design/icons';
 import { useAnimation } from '../../context/AnimationContext';
 import zip, { File } from '../../utils/zip';
@@ -48,9 +48,9 @@ const Header = () => {
   };
   return (
     <div className={style.header}>
-      <div className={style.logo}><ThunderboltFilled /><span className={style.text}>动画编辑</span></div>
+      <div className={style.logo}><a href="/"><ThunderboltFilled /></a><span className={style.text}>Lottie动画编辑</span></div>
       {/* <Button onClick={handlePreview}>预览</Button> */}
-      <Button disabled={!animation} className={style.download} onClick={handleDownload} type="primary">下载</Button>
+      <Button disabled={!animation} className={style.download} onClick={handleDownload} type="primary">下载到本地</Button>
     </div>
   );
 };
