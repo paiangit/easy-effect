@@ -26,7 +26,9 @@
     "build": "craco build",
     "test": "craco test",
     "test:coverage": "craco test --coverage --watchAll=false",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "pnpm build",
+    "deploy": "gh-pages -d build -r git@github.com:paiangit/paiangit.github.io.git -b main"
   },
   "eslintConfig": {
     "extends": [
@@ -55,6 +57,7 @@
     "@types/react-dom": "^17.0.11",
     "craco-alias": "^3.0.1",
     "craco-less": "^2.0.0",
+    "gh-pages": "^3.2.3",
     "typescript": "^4.5.5"
   }
 }
