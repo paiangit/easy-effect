@@ -1,4 +1,5 @@
 export default function generateDemoPage(animationData, animationStyle, backgroundConfig) {
+  /* eslint-disable no-useless-escape */
   return `
     <!DOCTYPE html>
     <html lang="en">
