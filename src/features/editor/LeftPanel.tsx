@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { FixedSizeGrid as Grid } from 'react-window';
-import { debounce } from 'lodash';
+import debounce from 'lodash-es/debounce';
 import useWrapperSize from '~hooks/useWrapperSize';
 import lottiePlayer from '~utils/lottiePlayer';
 import fetchAndPlayLottie from '~utils/fetchAndPlayLottie';

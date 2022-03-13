@@ -23,9 +23,8 @@ specifiers:
   file-saver: ^2.0.5
   gh-pages: ^3.2.3
   jszip: ^3.7.1
-  lodash: ^4.17.21
+  lodash-es: ^4.17.21
   lottie-web: ^5.8.1
-  progress-bar-webpack-plugin: ^2.1.0
   react: ^17.0.2
   react-dom: ^17.0.2
   react-error-boundary: ^3.1.4
@@ -48,7 +47,7 @@ dependencies:
   dayjs: 1.10.8
   file-saver: 2.0.5
   jszip: 3.7.1
-  lodash: 4.17.21
+  lodash-es: 4.17.21
   lottie-web: 5.8.1
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
@@ -72,7 +71,6 @@ devDependencies:
   cross-env: 7.0.3
   esbuild-loader: 2.18.0
   gh-pages: 3.2.3
-  progress-bar-webpack-plugin: 2.1.0
   speed-measure-webpack-plugin: 1.5.0
   thread-loader: 3.0.4
   typescript: 4.5.5
@@ -3456,6 +3454,7 @@ packages:
     dependencies:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
+    dev: false
 
   /chalk/4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
@@ -6866,6 +6865,10 @@ packages:
       p-locate: 5.0.0
     dev: false
 
+  /lodash-es/4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
+
   /lodash.debounce/4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
     dev: false
@@ -8326,20 +8329,6 @@ packages:
   /process-nextick-args/2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
     dev: false
-
-  /progress-bar-webpack-plugin/2.1.0:
-    resolution: {integrity: sha512-UtlZbnxpYk1wufEWfhIjRn2U52zlY38uvnzFhs8rRxJxC1hSqw88JNR2Mbpqq9Kix8L1nGb3uQ+/1BiUWbigAg==}
-    peerDependencies:
-      webpack: ^1.3.0 || ^2 || ^3 || ^4 || ^5
-    dependencies:
-      chalk: 3.0.0
-      progress: 2.0.3
-    dev: true
-
-  /progress/2.0.3:
-    resolution: {integrity: sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==}
-    engines: {node: '>=0.4.0'}
-    dev: true
 
   /promise/8.1.0:
     resolution: {integrity: sha512-W04AqnILOL/sPRXziNicCjSNRruLAuIHEOVBazepu0545DDNGYHz7ar9ZgZ1fMU8/MA4mVxp5rkBWRi6OXIy3Q==}
