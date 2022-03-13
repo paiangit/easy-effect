@@ -1,24 +1,26 @@
 @import '~styles/index.less';
 
+@padding: 25px;
 .main-page {
   position: relative;
   background-color: #161616;
   color: @primary-color;
   height: 100vh;
+  padding: 0 @padding;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
   :global(.anticon-arrow-right) {
-    margin-left: 0px;
+    margin-left: 0;
   }
 }
 
 .logo {
   position: absolute;
-  left: 30px;
-  top: 20px;
+  left: @padding;
+  top: @padding - 5px;
 }
 
 .brief {
