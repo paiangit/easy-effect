@@ -65,12 +65,20 @@ const Simulator: FC<{}> = () => {
 
   return (
     <div className={style.simulator}>
-      <div ref={wrapperRef} style={{...backgroundConfig, transform: backgroundTransform}} className={style['simulator-inner']} onDragOver={onDragOver} onDrop={onDrop}>
+      { !animation && <div className={style.placeholder} style={{width: Math.min(backgroundConfig.width, 700)}}>请从左侧列表中拖入动画到此处编辑</div> }
+      <div
+        ref={wrapperRef}
+        style={{...backgroundConfig, transform: backgroundTransform}}
+        className={style['simulator-inner']}
+        onDragOver={onDragOver}
+        onDrop={onDrop}
+      >
         <Draggable
           container={wrapperRef.current}
           animationStyle={animationStyle}
           setAnimationStyle={setAnimationStyle}
           canDrag={true}
+          style={{display: animation ? 'block' : 'none'}}
         >
           <div ref={animationRef} className={style.animation}></div>
         </Draggable>

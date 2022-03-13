@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useState, useRef, useEffect, useCallback, memo } from 'react';
+import React, { FC, ReactNode, useState, useRef, useEffect, useCallback, memo, CSSProperties } from 'react';
 import classnames from 'classnames';
 import './Draggable.less';
 
@@ -19,6 +19,7 @@ export interface DraggableProps {
   onDragStart?: (params) => void; // 鼠标拖拽开始
   onDragStop?: (params) => void; // 鼠标拖拽结束
   children: ReactNode;
+  style: CSSProperties;
 }
 
 interface Position {
@@ -41,6 +42,7 @@ const Draggable: FC<DraggableProps> = ({
   onDragStart,
   onDragStop,
   children,
+  style,
 }) => {
 
 
@@ -273,7 +275,7 @@ const Draggable: FC<DraggableProps> = ({
   }, [container, onMouseMove, onMouseUp]);
 
   return (
-    <div className={`draggable ${selected ? 'selected' : ''}`} onClick={onClick}>
+    <div className={`draggable ${selected ? 'selected' : ''}`} style={style} onClick={onClick}>
       {
         canDrag ?
           <div
