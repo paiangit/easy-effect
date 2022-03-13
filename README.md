@@ -6,6 +6,8 @@ A WYSIWYG editor for editing [Lottie](https://airbnb.design/lottie/) animations 
 
 See: [https://paiangit.github.io](https://paiangit.github.io/)
 
+![preview](https://paiangit.github.io/preview.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
