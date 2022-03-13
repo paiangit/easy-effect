@@ -4,7 +4,7 @@ import {
   // useEffect,
   // useCallback,
   useState,
-  useCallback
+  useCallback,
 } from 'react';
 import fetchAndPlayLottie from '~utils/fetchAndPlayLottie';
 import Draggable from '~components/Draggable';
@@ -30,9 +30,17 @@ const Simulator: FC<{}> = () => {
   const onDrop = useCallback(async (e) => {
     const lottieUrl = e.dataTransfer.getData('lottieUrl');
     if (!lottieUrl) return;
+    const { clientX, clientY } = e;
     const res = await fetchAndPlayLottie(lottieUrl, { container: animationRef.current, autoplay: false, name: lottieName });
     res.animation && setAnimation(res.animation);
-  }, [setAnimation]);
+    // 计算放置后动画的坐标
+    const {left, top, width, height} = wrapperRef.current.getBoundingClientRect();
+    let newLeft = clientX - left - animationStyle.width / 2;
+    let newTop = clientY - top - animationStyle.height / 2;
+    newLeft = Math.min(Math.max(0, newLeft), width - animationStyle.width);
+    newTop = Math.min(Math.max(0, newTop), height - animationStyle.height);
+    setAnimationStyle(Object.assign({}, animationStyle, {left: newLeft, top: newTop}));
+  }, [animationStyle, setAnimation, setAnimationStyle]);
 
   // const initBackgroundTransform = useCallback(() => {
   //   const { width, height } = wrapperRef.current.parentElement.getBoundingClientRect();

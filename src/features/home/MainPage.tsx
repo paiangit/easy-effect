@@ -19,8 +19,8 @@ function MainPage() {
   return (
     <div className={style['main-page']}>
       <Logo className={style.logo}/>
-      <p className={style.brief}>快速制作跨平台精美动效</p>
-      <p className={style.description}>通过精美的动效模版和可视化编辑界面，让你轻松获得满意的动效，支持H5、iOS、Android三平台～</p>
+      <p className={style.brief}>快速制作精美动效</p>
+      <p className={style.description}>基于精美的动效模版，在线可视化编辑，支持跨平台（H5、iOS、Android、ReactNative），完全开源免费，<br/>支持独立部署和二次开发，助您盘活动效资产，告别低效沟通和重复劳动～</p>
       <Button className={style.button} type="primary" onClick={handleClick}>立即使用<ArrowRightOutlined /></Button>
       <Footer/>
     </div>
