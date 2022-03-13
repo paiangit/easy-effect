@@ -1,4 +1,4 @@
-import React, {ReactNode, useState } from 'react';
+import React, {ReactNode, useState, useRef, MutableRefObject } from 'react';
 import { AnimationItem } from 'lottie-web';
 import { AnimationStyle } from '~components/Draggable';
 
@@ -13,6 +13,8 @@ const AnimationContext = React.createContext<
   {
     animation: Animation;
     setAnimation: (animation: Animation) => void;
+    animationRef: MutableRefObject<HTMLDivElement | undefined>;
+    animationWrapperRef: MutableRefObject<HTMLDivElement | undefined>;
     animationStyle: AnimationStyle;
     setAnimationStyle: (animationStyle: AnimationStyle) => void;
     backgroundConfig: BackGroundConfig,
@@ -23,6 +25,8 @@ const AnimationContext = React.createContext<
 AnimationContext.displayName = 'AnimationContext';
 
 export const AnimationProvider = ({ children }: { children: ReactNode }) => {
+  const animationRef = useRef<HTMLDivElement>();
+  const animationWrapperRef = useRef<HTMLDivElement>();
   const [animation, setAnimation] = useState<Animation>();
   const [animationStyle, setAnimationStyle] = useState<AnimationStyle>({
     left: 0, // 初始x坐标
@@ -42,6 +46,8 @@ export const AnimationProvider = ({ children }: { children: ReactNode }) => {
     <AnimationContext.Provider children={children} value={{
       animation,
       setAnimation, // 设置画板区域的动画实例
+      animationRef,
+      animationWrapperRef,
       animationStyle,
       setAnimationStyle, // 设置画板区包裹动画的可拖拽容器的样式（包括位置、大小、旋转角度等）
       backgroundConfig,

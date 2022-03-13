@@ -1,5 +1,4 @@
 import {
-  useRef,
   FC,
   // useEffect,
   // useCallback,
@@ -13,14 +12,12 @@ import { useAnimation } from '~context/AnimationContext';
 import style from './Simulator.module.less';
 
 const Simulator: FC<{}> = () => {
-  const animationRef = useRef<HTMLDivElement>();
-  const wrapperRef = useRef<HTMLDivElement>();
-  const {animation, setAnimation, animationStyle, setAnimationStyle, backgroundConfig } = useAnimation();
+  const {animation, setAnimation, animationRef, animationWrapperRef, animationStyle, setAnimationStyle, backgroundConfig } = useAnimation();
   const [
     backgroundTransform,
     // setBackgroundTransform,
   ] = useState('');
-  const lottieName = 'edit-lottie';
+  const lottieName = 'edit-animation';
 
   const onDragOver = useCallback((e) => {
     // 注意：这里必须要preventDefault()，才能走到onDrop()中，相当于是让元素可以被drop到其上
@@ -34,16 +31,16 @@ const Simulator: FC<{}> = () => {
     const res = await fetchAndPlayLottie(lottieUrl, { container: animationRef.current, autoplay: false, name: lottieName });
     res.animation && setAnimation(res.animation);
     // 计算放置后动画的坐标
-    const {left, top, width, height} = wrapperRef.current.getBoundingClientRect();
+    const {left, top, width, height} = animationWrapperRef.current.getBoundingClientRect();
     let newLeft = clientX - left - animationStyle.width / 2;
     let newTop = clientY - top - animationStyle.height / 2;
     newLeft = Math.min(Math.max(0, newLeft), width - animationStyle.width);
     newTop = Math.min(Math.max(0, newTop), height - animationStyle.height);
     setAnimationStyle(Object.assign({}, animationStyle, {left: newLeft, top: newTop}));
-  }, [animationStyle, setAnimation, setAnimationStyle]);
+  }, [animationRef, animationStyle, animationWrapperRef, setAnimation, setAnimationStyle]);
 
   // const initBackgroundTransform = useCallback(() => {
-  //   const { width, height } = wrapperRef.current.parentElement.getBoundingClientRect();
+  //   const { width, height } = animationWrapperRef.current.parentElement.getBoundingClientRect();
   //   const containerAspectRatio = width / height;
   //   const currentWidth = backgroundConfig.width;
   //   const currentHeight = backgroundConfig.height;
@@ -82,14 +79,14 @@ const Simulator: FC<{}> = () => {
     <div className={style.simulator}>
       { !animation && <div className={style.placeholder} style={{width: Math.min(backgroundConfig.width, 700)}}>请从左侧列表中拖入动画到此处编辑</div> }
       <div
-        ref={wrapperRef}
+        ref={animationWrapperRef}
         style={{...backgroundConfig, transform: backgroundTransform}}
         className={style['simulator-inner']}
         onDragOver={onDragOver}
         onDrop={onDrop}
       >
         <Draggable
-          container={wrapperRef.current}
+          container={animationWrapperRef.current}
           animationStyle={animationStyle}
           setAnimationStyle={setAnimationStyle}
           canDrag={true}

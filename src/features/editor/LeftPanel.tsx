@@ -5,9 +5,11 @@ import useWrapperSize from '~hooks/useWrapperSize';
 import lottiePlayer from '~utils/lottiePlayer';
 import fetchAndPlayLottie from '~utils/fetchAndPlayLottie';
 import style from './LeftPanel.module.less';
+import { useAnimation } from '~/context/AnimationContext';
 
 export default function LeftPanel(props) {
-  const [ previewVisible, setPreviewVisible ] = useState(false);
+  const [previewVisible, setPreviewVisible] = useState(false);
+  const { setAnimation, animationRef, animationWrapperRef, animationStyle, setAnimationStyle } = useAnimation();
   const { height, wrapperRef } = useWrapperSize();
   const previewRef = useRef();
   const rowCount = Math.ceil(props.data.length / 2);
@@ -55,6 +57,22 @@ export default function LeftPanel(props) {
     }
   }, [onMouseMove]);
 
+  const onClick = useCallback((lottieUrl) => {
+    return async () => {
+      console.log(lottieUrl);
+      if (!lottieUrl) return;
+      const res = await fetchAndPlayLottie(lottieUrl, { container: animationRef.current, autoplay: false, name: 'edit-animation' });
+      res.animation && setAnimation(res.animation);
+
+      // 计算放置后动画的坐标
+      const { width } = animationWrapperRef.current.getBoundingClientRect();
+      const parentHeight = animationWrapperRef.current.parentElement.parentElement.getBoundingClientRect().height;
+      let newLeft = width/2 - animationStyle.width / 2;
+      let newTop = parentHeight / 2 - animationStyle.height / 2;
+      setAnimationStyle(Object.assign({}, animationStyle, { left: newLeft, top: newTop }));
+    };
+  }, [animationRef, animationStyle, setAnimation, setAnimationStyle, animationWrapperRef]);
+
   const Cell = (cellProps) => {
     const { rowIndex, columnIndex } = cellProps;
     const cellStyle = cellProps.style;
@@ -69,6 +87,7 @@ export default function LeftPanel(props) {
         onMouseLeave={removePreview}
         onDragStart={onDragStart(props.data[index].lottieUrl)}
         onDragEnd={removePreview}
+        onClick={onClick(props.data[index].lottieUrl)}
       >
         <div
           className={style.thumbnail}
@@ -80,7 +99,7 @@ export default function LeftPanel(props) {
   };
 
   return (
-    <div className={ `${style['left-panel']} ${props.className}` } ref={wrapperRef}>
+    <div className={`${style['left-panel']} ${props.className}`} ref={wrapperRef}>
       <Grid
         width={184}
         height={height}
@@ -91,7 +110,7 @@ export default function LeftPanel(props) {
       >
         {Cell}
       </Grid>
-      <div className={style.preview} ref={previewRef} style={{display: `${previewVisible ? 'block': 'none'}`}}></div>
+      <div className={style.preview} ref={previewRef} style={{ display: `${previewVisible ? 'block' : 'none'}` }}></div>
     </div>
   );
 }
