@@ -3,7 +3,7 @@ import style from './Logo.module.less';
 
 function Logo(props) {
   return (
-    <div className={`${style.logo} ${props.className}`}><ThunderboltFilled /><span className={style.text}>动画易</span></div>
+    <div className={`${style.logo} ${props.className}`}><ThunderboltFilled /><span className={style.text}>动效易</span></div>
   );
 }
 

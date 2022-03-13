@@ -8,7 +8,7 @@ import Footer from './Footer';
 import style from './MainPage.module.less';
 
 function MainPage() {
-  useDocumentTitle('动画易');
+  useDocumentTitle('动效易');
 
   const navigate = useNavigate();
 
@@ -20,7 +20,10 @@ function MainPage() {
     <div className={style['main-page']}>
       <Logo className={style.logo}/>
       <p className={style.brief}>快速制作精美动效</p>
-      <p className={style.description}>基于精美的动效模版，在线可视化编辑，支持跨平台（H5、iOS、Android、ReactNative），完全开源免费，<br/>支持独立部署和二次开发，助您盘活动效资产，告别低效沟通和重复劳动～</p>
+      <p className={style.description}>
+        基于精美的动效模版，进行动效可视化编辑，导出的动效支持跨平台（H5、iOS、Android、ReactNative中均可用）。
+        <br/>完全开源免费，支持独立部署和二次开发。助您盘活动效资产，告别低效沟通和重复劳动～
+      </p>
       <Button className={style.button} type="primary" onClick={handleClick}>立即使用<ArrowRightOutlined /></Button>
       <Footer/>
     </div>

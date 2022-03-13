@@ -1,4 +1,4 @@
-// light版在用lottie的全局方法registerAnimation时，播放动画不完整，所以先用完整版
+// light版在用lottie的全局方法registerAnimation时，播放动效不完整，所以先用完整版
 import LottiePlayer, {
   AnimationItem,
   AnimationConfigWithPath,
@@ -42,7 +42,7 @@ class AnimationsPlayer {
   protected version: string = LottiePlayer.version;
 
   /**
-   * 播放所有/某一个动画
+   * 播放所有/某一个动效
    *
    * @param {string} [animationName]
    * @memberof AnimationsPlayer
@@ -52,7 +52,7 @@ class AnimationsPlayer {
   }
 
   /**
-   * 暂停所有/某一个动画
+   * 暂停所有/某一个动效
    *
    * @param {string} [animationName]
    * @memberof AnimationsPlayer
@@ -62,7 +62,7 @@ class AnimationsPlayer {
   }
 
   /**
-   * 切换所有/某一个动画的播放状态
+   * 切换所有/某一个动效的播放状态
    */
   public togglePause(animationName?: string): void {
     // @ts-ignore
@@ -70,14 +70,14 @@ class AnimationsPlayer {
   }
 
   /**
-   * 停止所有/某一个动画
+   * 停止所有/某一个动效
    */
   public stop(animationName?: string): void {
     LottiePlayer.stop(animationName);
   }
 
   /**
-   * 指定所有/某一个动画跳转到指定的位置并停止播放
+   * 指定所有/某一个动效跳转到指定的位置并停止播放
    */
   public goToAndPlay(value: number, isFrame: boolean, animationName?: string): void {
     const regAnimations = this.getRegisteredAnimations(animationName);
@@ -99,7 +99,7 @@ class AnimationsPlayer {
   }
 
   /**
-   * 指定所有/某一个动画跳转到指定的位置并停止播放
+   * 指定所有/某一个动效跳转到指定的位置并停止播放
    */
   public goToAndStop(value: number, isFrame: boolean, animationName?: string): void {
     // @ts-ignore
@@ -108,14 +108,14 @@ class AnimationsPlayer {
   }
 
   /**
-   * 设置所有/某一个动画的播放倍速
+   * 设置所有/某一个动效的播放倍速
    */
   public setSpeed(speed: number, animationName?: string): void {
     LottiePlayer.setSpeed(speed, animationName);
   }
 
   /**
-   * 设置所有/某一个动画的播放方向
+   * 设置所有/某一个动效的播放方向
    */
   public setDirection(direction: AnimationDirection, animationName?: string): void {
     LottiePlayer.setDirection(direction, animationName);
@@ -129,7 +129,7 @@ class AnimationsPlayer {
   }
 
   /**
-   * 开始一个动画
+   * 开始一个动效
    */
   public startOneAnimation(
     options: AnimationConfigWithPath | AnimationConfigWithData,
@@ -138,7 +138,7 @@ class AnimationsPlayer {
   ) {
     const regAnimations = this.getRegisteredAnimations([options.name]);
 
-    // 销毁同名动画
+    // 销毁同名动效
     if (regAnimations.length) {
       regAnimations.forEach((regAnimation) => {
         regAnimation.destroy();
@@ -180,7 +180,7 @@ class AnimationsPlayer {
   }
 
   /**
-   * 返回动画实例，以单独控制
+   * 返回动效实例，以单独控制
    *
    * 注意：这是一个相对比较耗时的操作，使用的时候值得注意，避免不必要的loadAnimation
    *
@@ -193,7 +193,7 @@ class AnimationsPlayer {
   }
 
   /**
-   * 销毁所有/某一指定名称的动画
+   * 销毁所有/某一指定名称的动效
    *
    * @param {string} [animationName]
    * @memberof AnimationsPlayer
@@ -210,7 +210,7 @@ class AnimationsPlayer {
   }
 
   /**
-   * 返回所有动画实例
+   * 返回所有动效实例
    */
   public getRegisteredAnimations(name?: Array<string> | string): Array<any> {
     // @ts-ignore
@@ -238,7 +238,7 @@ class AnimationsPlayer {
   }
 
   /**
-   * 默认为“高”，设置为“高”，“中”，“低”或数字> 1以提高播放器性能。在某些动画中，低至2不会显示任何差异。
+   * 默认为“高”，设置为“高”，“中”，“低”或数字> 1以提高播放器性能。在某些动效中，低至2不会显示任何差异。
    */
   public setQuality(quality: string | number): void {
     LottiePlayer.setQuality(quality);
@@ -252,7 +252,7 @@ class AnimationsPlayer {
   }
 
   /**
-   * 调整所有动画实例的大小
+   * 调整所有动效实例的大小
    */
   public resize(): void {
     // @ts-ignore
@@ -260,7 +260,7 @@ class AnimationsPlayer {
   }
 
   /**
-   * 冻结所有正在播放的动画或将要加载的动画
+   * 冻结所有正在播放的动效或将要加载的动效
    */
   public freeze(): void {
     // @ts-ignore
@@ -268,7 +268,7 @@ class AnimationsPlayer {
   }
 
   /**
-   * 取消所有动画的冻结
+   * 取消所有动效的冻结
    *
    * @memberof AnimationsPlayer
    */
@@ -302,7 +302,7 @@ class AnimationsPlayer {
   }
 }
 
-// animationsPlayer可播放一组lottie动画
+// animationsPlayer可播放一组lottie动效
 const animationsPlayer = new AnimationsPlayer();
 
 export default animationsPlayer;

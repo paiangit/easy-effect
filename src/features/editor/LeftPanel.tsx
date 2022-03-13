@@ -64,7 +64,7 @@ export default function LeftPanel(props) {
       const res = await fetchAndPlayLottie(lottieUrl, { container: animationRef.current, autoplay: false, name: 'edit-animation' });
       res.animation && setAnimation(res.animation);
 
-      // 计算放置后动画的坐标
+      // 计算放置后动效的坐标
       const { width } = animationWrapperRef.current.getBoundingClientRect();
       const parentHeight = animationWrapperRef.current.parentElement.parentElement.getBoundingClientRect().height;
       let newLeft = width/2 - animationStyle.width / 2;

@@ -1,6 +1,10 @@
-# lottie-editor
+# Easy Effect
 
-A WYSIWYG editor for editing Lottie animations easily.
+A WYSIWYG editor for editing [Lottie](https://airbnb.design/lottie/) animations easily.
+
+## Preview
+
+See: [https://paiangit.github.io](https://paiangit.github.io/)
 
 ## Available Scripts
 

@@ -45,13 +45,13 @@ export const AnimationProvider = ({ children }: { children: ReactNode }) => {
   return (
     <AnimationContext.Provider children={children} value={{
       animation,
-      setAnimation, // 设置画板区域的动画实例
+      setAnimation, // 设置画板区域的动效实例
       animationRef,
       animationWrapperRef,
       animationStyle,
-      setAnimationStyle, // 设置画板区包裹动画的可拖拽容器的样式（包括位置、大小、旋转角度等）
+      setAnimationStyle, // 设置画板区包裹动效的可拖拽容器的样式（包括位置、大小、旋转角度等）
       backgroundConfig,
-      setBackgroundConfig, // 设置动画背景样式（包括大小、背景色等）
+      setBackgroundConfig, // 设置动效背景样式（包括大小、背景色等）
     }}/>
   );
 }

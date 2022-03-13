@@ -136,7 +136,7 @@ const mockData = {
               "type": "lottie"
             }, {
               "id": 116,
-              "name": "bus动画.json",
+              "name": "bus动效.json",
               "lottieUrl": "https://gw.alipayobjects.com/os/sage/a6d93a59-da91-4f06-9c5e-d0c77e1fe67e/4ac2137c-5e1b-4190-ba07-3c45760e347e.json",
               "thumbnail": "https://gw.alipayobjects.com/zos/sage/db2be581-7753-4768-8af6-9cd87355edd9/06c435f5-94f4-42db-9ac0-e47f2a5c0435.png",
               "type": "lottie"
@@ -226,7 +226,7 @@ const mockData = {
               "type": "lottie"
             }, {
               "id": 138,
-              "name": "惠动画.json",
+              "name": "惠动效.json",
               "lottieUrl": "https://gw.alipayobjects.com/os/sage/981fa6ae-156a-43a7-b12c-d9a20550fe50/5aa020a9-b142-4816-aaa9-390fc5cd6dff.json",
               "thumbnail": "https://gw.alipayobjects.com/zos/sage/ef164120-1568-44ee-b28b-533cd04e8392/483a9822-63a8-46c3-885d-2eb272df2245.png",
               "type": "lottie"
@@ -246,7 +246,7 @@ const mockData = {
               "type": "lottie"
             }, {
               "id": 140,
-              "name": "奖杯动画.json",
+              "name": "奖杯动效.json",
               "lottieUrl": "https://gw.alipayobjects.com/os/sage/8a9bae66-3686-4c4f-a5db-6626d2e4ae52/51eae624-fb96-422f-a4c3-dfa2ad1c192d.json",
               "thumbnail": "https://gw.alipayobjects.com/zos/sage/be89e6bc-4f18-4ae7-a4bb-d4aa4b8832af/41da385a-8160-4227-b60b-8ba011fc8626.png",
               "type": "lottie"
@@ -381,31 +381,31 @@ const mockData = {
           "type": "lottie"
         }, {
           "id": 14,
-          "name": "人物动画012.json",
+          "name": "人物动效012.json",
           "lottieUrl": "https://gw.alipayobjects.com/os/sage/35cee5a3-30df-4b13-80d2-ee9abc7212f8/d4b594b3-53c0-4bcf-bc23-68fd4171322b.json",
           "thumbnail": "https://gw.alipayobjects.com/zos/sage/5031a753-f523-4afc-a7cf-9b32e53c1ada/c2ebdd83-48ac-49ac-b916-53cdef60f665.png",
           "type": "lottie"
         }, {
           "id": 13,
-          "name": "人物动画011.json",
+          "name": "人物动效011.json",
           "lottieUrl": "https://gw.alipayobjects.com/os/sage/99558ebc-f5da-4754-ac71-0958adb28875/4b820c40-ccd9-4d62-baed-142bbbffdc8e.json",
           "thumbnail": "https://gw.alipayobjects.com/zos/sage/97e5e87d-f712-4db2-919c-1c131f61216a/3e32c9f0-0d35-4973-878d-247a2ba6841b.png",
           "type": "lottie"
         }, {
           "id": 12,
-          "name": "人物动画010.json",
+          "name": "人物动效010.json",
           "lottieUrl": "https://gw.alipayobjects.com/os/sage/53acf099-0d5a-4304-84a5-a24fd70546b0/d9e3a1f5-dbf7-43c0-9e27-489bdee35ff7.json",
           "thumbnail": "https://gw.alipayobjects.com/zos/sage/2f758d1e-ad87-4ae3-a3d8-c40694b8a113/2ce704c0-ad87-4765-9433-0dd80af694a5.png",
           "type": "lottie"
         }, {
           "id": 11,
-          "name": "人物动画009.json",
+          "name": "人物动效009.json",
           "lottieUrl": "https://gw.alipayobjects.com/os/sage/56935057-a61a-4fe3-8636-cc4b4fe10bb0/214e7bb0-1888-463f-8b15-69d3cdb9d5aa.json",
           "thumbnail": "https://gw.alipayobjects.com/zos/sage/053de0b5-e0fa-410f-bf4c-8e738cb34439/22828eb0-cd01-40f0-b161-1d522ab2ba70.png",
           "type": "lottie"
         }, {
           "id": 10,
-          "name": "人物动画008.json",
+          "name": "人物动效008.json",
           "lottieUrl": "https://gw.alipayobjects.com/os/sage/264e37e7-a47b-4ff5-9df1-7a215dd076b6/3b20e263-3843-4515-bee6-21c44f6ddfc5.json",
           "thumbnail": "https://gw.alipayobjects.com/zos/sage/bb544944-ca8d-4d2f-9abf-2a2bf13a3f76/7ea2c41b-6094-4b77-a2ae-75e2ea8070bf.png",
           "type": "lottie"
@@ -417,43 +417,43 @@ const mockData = {
           "type": "lottie"
         }, {
           "id": 9,
-          "name": "人物动画007.json",
+          "name": "人物动效007.json",
           "lottieUrl": "https://gw.alipayobjects.com/os/sage/648211f9-bce7-4963-b625-f2e0ac53b317/97e8f928-8f46-4ae1-acbd-c0c4fc891b57.json",
           "thumbnail": "https://gw.alipayobjects.com/zos/sage/cb519b77-f425-4f83-a69b-334c62d7a119/cf28576b-9386-4681-967b-020a49e806d2.png",
           "type": "lottie"
         }, {
           "id": 8,
-          "name": "人物动画006.json",
+          "name": "人物动效006.json",
           "lottieUrl": "https://gw.alipayobjects.com/os/sage/d1c72f24-9fd1-4087-b59c-416425f70618/3f5e0ae0-0631-4f0f-8b18-5633d2ebd8f6.json",
           "thumbnail": "https://gw.alipayobjects.com/zos/sage/ed1c886f-bf8a-43cd-a20d-93d55deeb16c/eb07ea4b-2747-4b48-9dc7-f435331b5123.png",
           "type": "lottie"
         }, {
           "id": 7,
-          "name": "人物动画005.json",
+          "name": "人物动效005.json",
           "lottieUrl": "https://gw.alipayobjects.com/os/sage/9fe9519a-01f7-48bc-bf42-c46b98223230/87e4c45e-fd9e-485d-87ee-8e6f20a63e39.json",
           "thumbnail": "https://gw.alipayobjects.com/zos/sage/9e674e1e-27c7-4606-90bf-32c61ed95bf2/be231842-2e36-49a8-8fcf-f619b6144ff2.png",
           "type": "lottie"
         }, {
           "id": 6,
-          "name": "人物动画004.json",
+          "name": "人物动效004.json",
           "lottieUrl": "https://gw.alipayobjects.com/os/sage/8f5ea8c4-b521-47a6-a3f2-a29d5c836432/37ed428d-4226-4072-9210-050ead9b4568.json",
           "thumbnail": "https://gw.alipayobjects.com/zos/sage/f18e1261-1755-44ce-bae5-f7fe2d054fdf/6e23fceb-8655-4df8-9ab5-1f1821644ae1.png",
           "type": "lottie"
         }, {
           "id": 5,
-          "name": "人物动画003.json",
+          "name": "人物动效003.json",
           "lottieUrl": "https://gw.alipayobjects.com/os/sage/90d06b39-fbd7-449b-869a-32f0a9897578/1078e08a-0e4e-4b01-8afe-b489f170cb06.json",
           "thumbnail": "https://gw.alipayobjects.com/zos/sage/7cdde764-8cb8-4223-93d9-5530f8b830e3/f634441e-91e1-40d5-8a75-0ab044d931ac.png",
           "type": "lottie"
         }, {
           "id": 4,
-          "name": "人物动画002.json",
+          "name": "人物动效002.json",
           "lottieUrl": "https://gw.alipayobjects.com/os/sage/4230bc7d-dfe5-4660-9822-d53bfd69796b/28554bc8-3ab8-4aaf-bb91-229d5b2a5008.json",
           "thumbnail": "https://gw.alipayobjects.com/zos/sage/96ebd15a-954a-4d2f-8b7b-5ea9f9996f9c/a66f4d66-5a9b-411c-ac65-914873e416b0.png",
           "type": "lottie"
         }, {
           "id": 3,
-          "name": "人物动画001.json",
+          "name": "人物动效001.json",
           "lottieUrl": "https://gw.alipayobjects.com/os/sage/b9cfa927-f669-48a8-af60-7dc70c236da6/235d4df6-1214-4ead-9500-7f60e8666d49.json",
           "thumbnail": "https://gw.alipayobjects.com/zos/sage/a0d14660-c5e4-4ecd-937f-f581622c160a/9bb3d9a5-9f87-4a0a-b538-e3a956e84816.png",
           "type": "lottie"
@@ -595,7 +595,7 @@ const mockData = {
           "type": "lottie"
         }, {
           "id": 45,
-          "name": "按钮光效动画.json",
+          "name": "按钮光效动效.json",
           "lottieUrl": "https://gw.alipayobjects.com/os/sage/593851de-c729-41bd-90a1-2b2c23b39758/1438ab5c-178a-4885-b963-0a856ac831fc.json",
           "thumbnail": "https://gw.alipayobjects.com/zos/sage/2007d980-f573-46d1-8eb0-969d6f02da61/a8cf5193-1a54-4b71-a263-44a1ec032c99.png",
           "type": "lottie"
@@ -854,7 +854,7 @@ const mockData = {
           "type": "lottie"
         }, {
           "id": 56,
-          "name": "点赞动画4.json",
+          "name": "点赞动效4.json",
           "lottieUrl": "https://gw.alipayobjects.com/os/sage/8a39f37e-6db7-44e8-8c39-5f5306215ca4/33ac0782-c5f7-4a6c-b177-e03d3ca34f62.json",
           "thumbnail": "https://gw.alipayobjects.com/zos/sage/bf164f99-84d0-4e91-b2fa-3926aa1ab2be/51ba2bcd-d5dd-4b5d-a42b-fd128f0dd57b.png",
           "type": "lottie"
@@ -878,7 +878,7 @@ const mockData = {
           "type": "lottie"
         }, {
           "id": 51,
-          "name": "地址icon动画.json",
+          "name": "地址icon动效.json",
           "lottieUrl": "https://gw.alipayobjects.com/os/sage/2b44645f-d63b-4adb-be3c-886afe7ddd70/bbb32d3b-c878-4888-82f1-928678e5e42f.json",
           "thumbnail": "https://gw.alipayobjects.com/zos/sage/6eda6a5e-ae89-41c3-9cd4-07d85c265d26/a6c19f41-e46b-4b1e-958e-7add96fb1c73.png",
           "type": "lottie"
@@ -944,7 +944,7 @@ const mockData = {
           "type": "lottie"
         }, {
           "id": 65,
-          "name": "收藏动画.json",
+          "name": "收藏动效.json",
           "lottieUrl": "https://gw.alipayobjects.com/os/sage/e9122a8f-68af-48cf-aab0-24f17dfaba00/21d63892-3acc-4499-b117-6d85f66f4b5a.json",
           "thumbnail": "https://gw.alipayobjects.com/zos/sage/edbdbb82-feae-4807-93cc-02010c205a90/98041562-2695-4af0-83fe-8c11c8590388.png",
           "type": "lottie"
@@ -962,7 +962,7 @@ const mockData = {
           "type": "lottie"
         }, {
           "id": 83,
-          "name": "垃圾桶动画2.json",
+          "name": "垃圾桶动效2.json",
           "lottieUrl": "https://gw.alipayobjects.com/os/sage/a17af99b-09d7-4282-888f-901dffa25b9c/bbdf3622-d5ca-4352-837e-3030577c0ddc.json",
           "thumbnail": "https://gw.alipayobjects.com/zos/sage/cc4fdbc4-6bdb-46b6-9336-2fe9e91ee1cc/ce00f861-2176-4547-95b0-7e7491a7342e.png",
           "type": "lottie"

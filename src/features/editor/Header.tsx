@@ -50,7 +50,7 @@ const Header: FC<{}> = () => {
 
   return (
     <div className={style.header}>
-      <div className={style.logo}><a href="/"><ThunderboltFilled /></a><span className={style.text}>Lottie动画编辑</span></div>
+      <div className={style.logo}><a href="/"><ThunderboltFilled /></a><span className={style.text}>Lottie动效编辑</span></div>
       {/* <Button onClick={handlePreview}>预览</Button> */}
       <Button disabled={!animation} className={style.download} onClick={handleDownload} type="primary">导出</Button>
       <Button className={style.github} href="https://github.com/paiangit/lottie-editor" target="_blank">

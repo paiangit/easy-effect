@@ -1,5 +1,5 @@
 /**
- * Lottie 动画播放控制器
+ * Lottie 动效播放控制器
  */
 import { FC, useEffect, useState, useRef, useCallback } from 'react';
 import { Button, Progress } from 'antd';
@@ -38,7 +38,7 @@ const LottiePlayController: FC<{ animation: AnimationItem, width: number }> = ({
     setIsPaused(true);
   }, [animation]);
 
-  // 设置动画进度条百分比
+  // 设置动效进度条百分比
   // const setPercent = (progress) => {
   //   if (!animation) return;
 
@@ -83,14 +83,14 @@ const LottiePlayController: FC<{ animation: AnimationItem, width: number }> = ({
   //   animation.setDirection(directionRef.current);
   // };
 
-  // // 销毁动画
+  // // 销毁动效
   // const destroy = () => {
   //   if (!animation) return;
 
   //   animation.destroy();
   // };
 
-  // resize动画
+  // resize动效
   // const resize = () => {
   //   animation.resize();
   // };
@@ -123,7 +123,7 @@ const LottiePlayController: FC<{ animation: AnimationItem, width: number }> = ({
     }
   }, [animation, goToAndStop, stop]);
 
-  // 当不循环时，在播放结束时，跳转至动画开头，并切换暂停按钮状态为播放，便于直接点击播放按钮再次播放，增强体验
+  // 当不循环时，在播放结束时，跳转至动效开头，并切换暂停按钮状态为播放，便于直接点击播放按钮再次播放，增强体验
   useEffect(() => {
     animation && animation.addEventListener('enterFrame', onEnterframe);
     return () => {

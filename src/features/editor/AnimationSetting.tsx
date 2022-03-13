@@ -12,7 +12,7 @@ const AnimationSetting: FC<{}> = () => {
   const { animation, setAnimation, animationStyle, setAnimationStyle, backgroundConfig, setBackgroundConfig } = useAnimation();
   const assets = animation?.animationData.assets.filter(item => item.p);
 
-  // 因为直接修改数据是不会渲染到界面上的，所以需要先销毁旧的动画实例，再创建新的动画实例，以渲染更新后的数据到界面上
+  // 因为直接修改数据是不会渲染到界面上的，所以需要先销毁旧的动效实例，再创建新的动效实例，以渲染更新后的数据到界面上
   const updateAnimation = useCallback(() => {
     const animationData = animation.animationData;
     const container = animation.wrapper;
@@ -87,7 +87,7 @@ const AnimationSetting: FC<{}> = () => {
       });
     });
     return (
-      <Panel header="动画编辑" key="2" className="site-collapse-custom-panel">
+      <Panel header="动效编辑" key="2" className="site-collapse-custom-panel">
         <Form.Item label="尺寸">
           <SizeInput value={animationStyle} onChange={setAnimationStyle as (value: SizeValue) => void}></SizeInput>
         </Form.Item>

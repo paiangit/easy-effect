@@ -30,7 +30,7 @@ const Simulator: FC<{}> = () => {
     const { clientX, clientY } = e;
     const res = await fetchAndPlayLottie(lottieUrl, { container: animationRef.current, autoplay: false, name: lottieName });
     res.animation && setAnimation(res.animation);
-    // 计算放置后动画的坐标
+    // 计算放置后动效的坐标
     const {left, top, width, height} = animationWrapperRef.current.getBoundingClientRect();
     let newLeft = clientX - left - animationStyle.width / 2;
     let newTop = clientY - top - animationStyle.height / 2;
@@ -68,7 +68,7 @@ const Simulator: FC<{}> = () => {
   //   }
   // }, [initBackgroundTransform]);
 
-  // 删除动画
+  // 删除动效
   const onKeyUp = useCallback((e) => {
     if (e.keyCode === 8 || e.keyCode === 46) {
       setAnimation(null);
@@ -77,7 +77,7 @@ const Simulator: FC<{}> = () => {
 
   return (
     <div className={style.simulator}>
-      { !animation && <div className={style.placeholder} style={{width: Math.min(backgroundConfig.width, 700)}}>请从左侧列表中拖入动画到此处编辑</div> }
+      { !animation && <div className={style.placeholder} style={{width: Math.min(backgroundConfig.width, 700)}}>请从左侧列表中拖入动效到此处编辑</div> }
       <div
         ref={animationWrapperRef}
         style={{...backgroundConfig, transform: backgroundTransform}}
