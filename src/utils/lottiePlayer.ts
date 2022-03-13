@@ -1,10 +1,9 @@
-// light版在用lottie的全局方法registerAnimation时，播放动效不完整，所以先用完整版
 import LottiePlayer, {
   AnimationItem,
   AnimationConfigWithPath,
   AnimationConfigWithData,
   AnimationDirection,
-} from 'lottie-web';
+} from 'lottie-web/build/player/lottie_light';
 
 /**
  * lottie提供的方法

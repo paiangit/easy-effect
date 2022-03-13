@@ -1,5 +1,5 @@
 import React, {ReactNode, useState, useRef, MutableRefObject } from 'react';
-import { AnimationItem } from 'lottie-web';
+import { AnimationItem } from 'lottie-web/build/player/lottie_light';
 import { AnimationStyle } from '~components/Draggable';
 
 export type Animation = AnimationItem & {animationData?: any, wrapper?: HTMLElement};

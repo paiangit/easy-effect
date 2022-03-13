@@ -4,7 +4,7 @@
 import { FC, useEffect, useState, useRef, useCallback } from 'react';
 import { Button, Progress } from 'antd';
 import classNames from 'classnames';
-import { AnimationItem, AnimationDirection } from 'lottie-web';
+import { AnimationItem, AnimationDirection } from 'lottie-web/build/player/lottie_light';
 import style from './LottiePlayController.module.less';
 
 // 速度增减的步长
@@ -12,7 +12,7 @@ import style from './LottiePlayController.module.less';
 
 const LottiePlayController: FC<{ animation: AnimationItem, width: number }> = ({ animation, width }) => {
   const [isPaused, setIsPaused] = useState<boolean>();
-  const [loop, setLoop] = useState<boolean>();
+  const [loop, setLoop] = useState<boolean|number>();
   const [percent, setPercent] = useState<number>(0);
   const directionRef = useRef<AnimationDirection>(1);
   // const speedRef = useRef<number>(1);

@@ -1,4 +1,4 @@
-import { AnimationConfigWithData, AnimationItem } from 'lottie-web';
+import { AnimationConfigWithData, AnimationItem } from 'lottie-web/build/player/lottie_light';
 import http from './http';
 import lottiePlayer from './lottiePlayer';
 import generateUUID from './generateUUID';
