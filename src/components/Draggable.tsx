@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useState, useRef, useEffect, useCallback, memo, CSSProperties } from 'react';
+import React, { FC, ReactNode, useState, useRef, useEffect, useCallback, memo, CSSProperties, KeyboardEvent } from 'react';
 import classnames from 'classnames';
 import './Draggable.less';
 
@@ -20,6 +20,7 @@ export interface DraggableProps {
   onDragStop?: (params) => void; // 鼠标拖拽结束
   children: ReactNode;
   style: CSSProperties;
+  onKeyUp?;
 }
 
 interface Position {
@@ -43,9 +44,8 @@ const Draggable: FC<DraggableProps> = ({
   onDragStop,
   children,
   style,
+  onKeyUp = (e: KeyboardEvent<Element>) => {},
 }) => {
-
-
   const dragContainer = useRef<HTMLElement | null>();
 
   // 初始数据，因为不需要重新 render 所以用 useRef
@@ -260,6 +260,15 @@ const Draggable: FC<DraggableProps> = ({
     setSelected(true);
   };
 
+  // keyup事件
+  useEffect(() => {
+    onKeyUp && window.addEventListener('keyup', onKeyUp);
+
+    return () => {
+      onKeyUp && window.removeEventListener('keyup', onKeyUp);
+    };
+  });
+
   // 点击其它位置取消选中
   useEffect(() => {
     const handleClick = (e) => {
@@ -275,7 +284,7 @@ const Draggable: FC<DraggableProps> = ({
   }, [container, onMouseMove, onMouseUp]);
 
   return (
-    <div className={`draggable ${selected ? 'selected' : ''}`} style={style} onClick={onClick}>
+    <div className={`draggable ${selected ? 'selected' : ''}`} style={style} onClick={onClick} onKeyUp={onKeyUp}>
       {
         canDrag ?
           <div

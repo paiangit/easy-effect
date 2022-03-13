@@ -71,6 +71,13 @@ const Simulator: FC<{}> = () => {
   //   }
   // }, [initBackgroundTransform]);
 
+  // 删除动画
+  const onKeyUp = useCallback((e) => {
+    if (e.keyCode === 8 || e.keyCode === 46) {
+      setAnimation(null);
+    }
+  }, [setAnimation]);
+
   return (
     <div className={style.simulator}>
       { !animation && <div className={style.placeholder} style={{width: Math.min(backgroundConfig.width, 700)}}>请从左侧列表中拖入动画到此处编辑</div> }
@@ -87,6 +94,7 @@ const Simulator: FC<{}> = () => {
           setAnimationStyle={setAnimationStyle}
           canDrag={true}
           style={{display: animation ? 'block' : 'none'}}
+          onKeyUp = {onKeyUp}
         >
           <div ref={animationRef} className={style.animation}></div>
         </Draggable>
