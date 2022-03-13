@@ -77,7 +77,10 @@ const Simulator: FC<{}> = () => {
 
   return (
     <div className={style.simulator}>
-      { !animation && <div className={style.placeholder} style={{width: Math.min(backgroundConfig.width, 700)}}>请从左侧列表中拖入动效到此处编辑</div> }
+      { !animation &&
+        <div className={style.tip} style={{width: Math.min(backgroundConfig.width, 700)}}>
+          <p className={style['tip-text']}>请从左侧列表中拖入动效到下面画板中编辑</p>
+        </div> }
       <div
         ref={animationWrapperRef}
         style={{...backgroundConfig, transform: backgroundTransform}}

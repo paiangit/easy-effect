@@ -38,7 +38,7 @@ export const AnimationProvider = ({ children }: { children: ReactNode }) => {
   });
   const [backgroundConfig, setBackgroundConfig] = useState<BackGroundConfig>({
     width: 750, // 背景宽
-    height: 750, // 背景高
+    height: 1334, // 背景高
     backgroundColor: 'rgba(65, 65, 65, .5)', // 背景色
   });
 

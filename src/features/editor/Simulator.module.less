@@ -23,14 +23,23 @@
   height: 100%;
 }
 
-.placeholder {
+.tip {
   position: fixed;
-  top: calc(50% + 15px);
+  top: 130px;
   left: calc(50% - 27px);
   transform: translate(-50%, -50%);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  opacity: .7;
   color: rgba(255, 255, 255, 0.65);
+}
+.tip-text {
+  position: relative;
+  z-index: 1;
+  border: 1px dashed rgba(255, 255, 255, 0.65);;
+  padding: 10px 20px;
+  border-radius: 100px;
 }
