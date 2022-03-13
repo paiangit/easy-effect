@@ -95,6 +95,10 @@ module.exports = {
 
       webpackConfig.entry = path.resolve(__dirname, './src/index.tsx');
 
+      webpackConfig.externals = {
+        'lottie-web/build/player/lottie_light': 'lottie'
+      };
+
       webpackConfig.optimization = {
         splitChunks: {
           cacheGroups: {
