@@ -176,8 +176,8 @@ const LottiePlayController: FC<{ animation: AnimationItem, width: number }> = ({
           type="link"
           className={style.button}
           onClick={() => toggleLoop()}
-        >{loop ? <span title="循环" className={classNames('iconfont', 'icon-xunhuan')} />
-          : <span title="不循环" className={classNames('iconfont', 'icon-buxunhuan')}></span>}
+        >{loop ? <span title="不循环" className={classNames('iconfont', 'icon-buxunhuan')}></span>
+          : <span title="循环" className={classNames('iconfont', 'icon-xunhuan')} />}
         </Button>
       </div>
     </div>

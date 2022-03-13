@@ -55,6 +55,10 @@ const AnimationSetting: FC<{}> = () => {
     });
   }, [backgroundConfig, setBackgroundConfig]);
 
+  const onKeyUp = (e) => {
+    e.stopPropagation();
+  };
+
   const BackgroundConfigPanel = useMemo(() => (
     <Panel header="背景设置" key="1" className="site-collapse-custom-panel">
       <Form.Item label="尺寸">
@@ -125,7 +129,7 @@ const AnimationSetting: FC<{}> = () => {
   }, [animation, animationStyle, assets, beforeUpdate, onTextChange, setAnimationStyle]);
 
   return (
-    <div className={style['animation-setting']}>
+    <div className={style['animation-setting']} onKeyUp={onKeyUp}>
       <Form colon={false}>
         <Collapse
           bordered={false}
