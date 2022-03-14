@@ -26,11 +26,12 @@
     "start": "craco start",
     "start:measure": "npx cross-env MEASURE=true craco start",
     "build": "craco build",
+    "build:analyze": "npx cross-env ANALYZE=true craco build",
     "test": "craco test",
     "test:coverage": "craco test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "predeploy": "pnpm build",
-    "deploy": "pnpm predeploy && gh-pages -d build -r git@github.com:paiangit/paiangit.github.io.git -b main"
+    "deploy": "gh-pages -d build -r git@github.com:paiangit/paiangit.github.io.git -b main"
   },
   "eslintConfig": {
     "extends": [

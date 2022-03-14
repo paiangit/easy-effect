@@ -143,7 +143,9 @@ module.exports = {
 
       // 只在生产环境下开启包大小分析插件，开发环境下是未压缩的大小，分析不真实
       whenProd(() => {
-        webpackConfig.plugins.push(new BundleAnalyzerPlugin({ generateStatsFile: true, openAnalyzer: false }));
+        if (process.env.ANALYZE === 'true') {
+          webpackConfig.plugins.push(new BundleAnalyzerPlugin({ generateStatsFile: true, openAnalyzer: false }));
+        }
       });
 
       // 是否开启measure-speed-webpack-plugin
