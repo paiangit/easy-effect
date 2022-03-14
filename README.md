@@ -1,8 +1,8 @@
 <p align="center">
-  <a href="https://paiangit.github.io">
+  <a href="https://paiangit.github.io" style="margin-bottom: -20px;">
     <img src="https://paiangit.github.io/logo192.png" width="80px">
   </a>
-  <h1 align="center" style="margin-top: -20px;">Easy Effect</h1>
+  <h1 align="center">Easy Effect</h1>
 </p>
 
 <br/>

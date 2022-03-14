@@ -1,0 +1,6 @@
+#stylelint自动忽略node_modules和bower_modules
+*.js
+*.png
+*.eot
+*.ttf
+*.woff
