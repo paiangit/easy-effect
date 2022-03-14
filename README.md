@@ -1,14 +1,38 @@
-# Easy Effect
+<p align="center">
+  <a href="https://ant.design">
+    <img src="https://paiangit.github.io/logo192.png" width="60px">
+  </a>
+</p>
+
+<h1 align="center">Easy Effect</h1>
+
+## 🙋 Introduction
 
 Easy Effect is a WYSIWYG [Lottie](https://airbnb.design/lottie/) animation editor, dedicated to helping you make dynamic effects easily.
 
-## Preview
+## ✨ Feature
+
+- 🌈 ease to use
+
+Anyone who want to create an animation effect can use, not only designers.
+
+- 🚀 efficient
+
+Just choose a template, change some images or texts and export it.
+
+- 🍀 Cross-platform
+
+The output (a JSON data file) is cross-platform, you can play it on Web, iOS, Android platform, even Windows.
+
+- 🌟 opensource and free
+
+The project is fullly opensource and free. You can use it any where. 
+
+## 📦 Use
 
 See: [https://paiangit.github.io](https://paiangit.github.io/)
 
 ![preview](https://paiangit.github.io/preview.png)
-
-## How to use it
 
 1. Select and drag an animation from the animation list on the left side to the center area. We call the center area cavas.
 
@@ -20,7 +44,7 @@ See: [https://paiangit.github.io](https://paiangit.github.io/)
 
 5. After finishing all the editing steps, you can click the download button to get the result. The result is an lottie JSON file, which contains all the infomation of the animation. And in the zip file you download, there is also a file named demo.html. You can just double click it to view the animation in a webpage easily.
 
-## Available Scripts
+## 🤝 Contributing
 
 In the project directory, you can run:
 
