@@ -28,7 +28,6 @@
     "start:measure": "npx cross-env MEASURE=true craco start",
     "build": "craco build",
     "build:analyze": "npx cross-env ANALYZE=true craco build",
-    "lint:style": "stylelint --fix --cache src/**/*.less --custom-syntax postcss-less",
     "test": "craco test --watchAll=false --forceExit",
     "test:coverage": "craco test --coverage --watchAll=false",
     "eject": "react-scripts eject",
@@ -80,6 +79,7 @@
     "webpack-bundle-analyzer": "^4.5.0"
   },
   "lint-staged": {
-    "*.css": "pnpm lint:style"
+    "*.css": "stylelint --fix --cache",
+    "*.less": "stylelint --fix --cache --custom-syntax postcss-less"
   }
 }

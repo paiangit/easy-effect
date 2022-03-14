@@ -1,6 +1,8 @@
 {
   "editor.codeActionsOnSave": {
     // 保存时stylelint插件自动修正样式格式
-    "source.fixAll.stylelint": true
+    "source.fixAll.stylelint": true,
+    // 保存时eslint插件自动修正JS/TS等
+    "source.fixAll.eslint": true,
   }
 }
