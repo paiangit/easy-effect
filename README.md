@@ -1,14 +1,13 @@
 <p align="center">
-  <a href="https://ant.design">
-    <img src="https://paiangit.github.io/logo192.png" width="60px">
+  <a href="https://paiangit.github.io">
+    <img src="https://paiangit.github.io/logo192.png" width="80px">
   </a>
+  <h1 align="center">Easy Effect</h1>
 </p>
 
-<h1 align="center">Easy Effect</h1>
+## 🖖 Introduction
 
-## 🙋 Introduction
-
-Easy Effect is a WYSIWYG [Lottie](https://airbnb.design/lottie/) animation editor, dedicated to helping you make dynamic effects easily.
+Easy Effect is a WYSIWYG animation editor based on Lottie.
 
 ## ✨ Feature
 
@@ -59,3 +58,7 @@ Launches the test runner in the interactive watch mode.
 ### `pnpm run build`
 
 Builds the app for production to the `build` folder.
+
+## 📃 License
+
+[MIT](https://opensource.org/licenses/MIT)

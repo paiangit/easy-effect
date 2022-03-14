@@ -23,11 +23,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "prepare": "husky install",
     "start": "craco start",
     "start:measure": "npx cross-env MEASURE=true craco start",
     "build": "craco build",
     "build:analyze": "npx cross-env ANALYZE=true craco build",
-    "test": "craco test",
+    "test": "craco test --watchAll=false --forceExit",
     "test:coverage": "craco test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "predeploy": "pnpm build",
@@ -52,6 +53,8 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^16.2.1",
+    "@commitlint/config-conventional": "^16.2.1",
     "@craco/craco": "^6.4.3",
     "@types/jest": "^27.4.1",
     "@types/lodash": "^4.14.179",
@@ -65,6 +68,7 @@
     "cross-env": "^7.0.3",
     "esbuild-loader": "^2.18.0",
     "gh-pages": "^3.2.3",
+    "husky": "^7.0.4",
     "speed-measure-webpack-plugin": "^1.5.0",
     "thread-loader": "^3.0.4",
     "typescript": "^4.5.5",

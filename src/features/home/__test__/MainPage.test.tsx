@@ -23,11 +23,6 @@ test('简介标题展示', async () => {
   expect(screen.getByText('快速制作精美动效')).toBeInTheDocument();
 });
 
-test('Footer展示', async () => {
-  renderPage(<MainPage/>, { route: '/' });
-  expect(screen.getByText('Ant Design')).toBeInTheDocument();
-});
-
 test('立即使用按钮展示', async () => {
   renderPage(<MainPage/>, { route: '/' });
   expect(screen.getByText('立即使用')).toBeInTheDocument();
