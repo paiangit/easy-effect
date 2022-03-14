@@ -5,7 +5,10 @@ function NotFoundPage() {
   return (
     <div className={style['not-found-page']}>
       <CloudOutlined />
-      <p className={style.info}><FrownOutlined />&nbsp;页面去火星啦……</p>
+      <p className={style.info}>
+        <FrownOutlined />
+        &nbsp;页面去火星啦……
+      </p>
     </div>
   );
 }

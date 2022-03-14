@@ -14,11 +14,9 @@ function AppProviders({ children }: { children: ReactNode }) {
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
-      <BrowserRouter>
-        {children}
-      </BrowserRouter>
+      <BrowserRouter>{children}</BrowserRouter>
     </ErrorBoundary>
   );
-};
+}
 
 export default AppProviders;

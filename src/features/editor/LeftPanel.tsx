@@ -9,7 +9,13 @@ import { useAnimation } from '~/context/AnimationContext';
 
 export default function LeftPanel(props) {
   const [previewVisible, setPreviewVisible] = useState(false);
-  const { setAnimation, animationRef, animationWrapperRef, animationStyle, setAnimationStyle } = useAnimation();
+  const {
+    setAnimation,
+    animationRef,
+    animationWrapperRef,
+    animationStyle,
+    setAnimationStyle,
+  } = useAnimation();
   const { height, wrapperRef } = useWrapperSize();
   const previewRef = useRef();
   const rowCount = Math.ceil(props.data.length / 2);
@@ -17,36 +23,49 @@ export default function LeftPanel(props) {
 
   const destroyLottie = useCallback(() => lottiePlayer.destroy(lottieName), []);
 
-  const onMouseEnter = useCallback((lottieUrl) => {
-    // console.log('mouseenter');
-    return debounce(async () => {
-      if (window.innerWidth <= 1024) return;
+  const onMouseEnter = useCallback(
+    lottieUrl => {
+      // console.log('mouseenter');
+      return debounce(async () => {
+        if (window.innerWidth <= 1024) return;
+        destroyLottie();
+        await fetchAndPlayLottie(lottieUrl, {
+          container: previewRef.current,
+          name: lottieName,
+        });
+        setPreviewVisible(true);
+      }, 20);
+    },
+    [destroyLottie]
+  );
+
+  const removePreview = debounce(
+    useCallback(() => {
+      // console.log('removePreview');
       destroyLottie();
-      await fetchAndPlayLottie(lottieUrl, { container: previewRef.current, name: lottieName });
-      setPreviewVisible(true);
-    }, 20);
-  }, [destroyLottie]);
+      setPreviewVisible(false);
+    }, [destroyLottie]),
+    20
+  );
 
-  const removePreview = debounce(useCallback(() => {
-    // console.log('removePreview');
-    destroyLottie();
-    setPreviewVisible(false);
-  }, [destroyLottie]), 20);
-
-  const onDragStart = useCallback((lottieUrl) => {
-    return (e) => {
+  const onDragStart = useCallback(lottieUrl => {
+    return e => {
       e.dataTransfer.setData('lottieUrl', lottieUrl);
     };
   }, []);
 
-  const onMouseMove = useCallback((e) => {
-    const x = e.clientX;
-    const y = e.clientY;
-    const { left, top, width, height } = wrapperRef.current.getBoundingClientRect();
-    if (x > (left + width) || x < left || y > (top + height) || y < top) {
-      removePreview();
-    }
-  }, [removePreview, wrapperRef]);
+  const onMouseMove = useCallback(
+    e => {
+      const x = e.clientX;
+      const y = e.clientY;
+      const { left, top, width, height } =
+        wrapperRef.current.getBoundingClientRect();
+      if (x > left + width || x < left || y > top + height || y < top) {
+        removePreview();
+      }
+    },
+    [removePreview, wrapperRef]
+  );
   // fix bug:
   // when switch preview extremely fastly,
   // the last preview animation not be destroyed because loading lottie data is async
@@ -55,52 +74,74 @@ export default function LeftPanel(props) {
 
     return () => {
       window.removeEventListener('mousemove', onMouseMove);
-    }
+    };
   }, [onMouseMove]);
 
-  const onClick = useCallback((lottieUrl) => {
-    return async () => {
-      // console.log(lottieUrl);
-      if (!lottieUrl) return;
-      const res = await fetchAndPlayLottie(lottieUrl, { container: animationRef.current, autoplay: false, name: 'edit-animation' });
-      res.animation && setAnimation(res.animation);
+  const onClick = useCallback(
+    lottieUrl => {
+      return async () => {
+        // console.log(lottieUrl);
+        if (!lottieUrl) return;
+        const res = await fetchAndPlayLottie(lottieUrl, {
+          container: animationRef.current,
+          autoplay: false,
+          name: 'edit-animation',
+        });
+        res.animation && setAnimation(res.animation);
 
-      // 计算放置后动效的坐标
-      const { width } = animationWrapperRef.current.getBoundingClientRect();
-      const parentHeight = animationWrapperRef.current.parentElement.parentElement.getBoundingClientRect().height;
-      let newLeft = width/2 - animationStyle.width / 2;
-      let newTop = parentHeight / 2 - animationStyle.height / 2;
-      setAnimationStyle(Object.assign({}, animationStyle, { left: newLeft, top: newTop }));
-    };
-  }, [animationRef, animationStyle, setAnimation, setAnimationStyle, animationWrapperRef]);
+        // 计算放置后动效的坐标
+        const { width } = animationWrapperRef.current.getBoundingClientRect();
+        const parentHeight =
+          animationWrapperRef.current.parentElement.parentElement.getBoundingClientRect()
+            .height;
+        let newLeft = width / 2 - animationStyle.width / 2;
+        let newTop = parentHeight / 2 - animationStyle.height / 2;
+        setAnimationStyle(
+          Object.assign({}, animationStyle, { left: newLeft, top: newTop })
+        );
+      };
+    },
+    [
+      animationRef,
+      animationStyle,
+      setAnimation,
+      setAnimationStyle,
+      animationWrapperRef,
+    ]
+  );
 
-  const Cell = useCallback((cellProps) => {
-    const { rowIndex, columnIndex } = cellProps;
-    const cellStyle = cellProps.style;
-    const index = Math.min(rowIndex * 2 + columnIndex, props.data.length - 1);
+  const Cell = useCallback(
+    cellProps => {
+      const { rowIndex, columnIndex } = cellProps;
+      const cellStyle = cellProps.style;
+      const index = Math.min(rowIndex * 2 + columnIndex, props.data.length - 1);
 
-    return (
-      <div
-        className={style['left-panel-item']}
-        style={cellStyle}
-        draggable={true}
-        onMouseEnter={onMouseEnter(props.data[index].lottieUrl)}
-        onMouseLeave={removePreview}
-        onDragStart={onDragStart(props.data[index].lottieUrl)}
-        onDragEnd={removePreview}
-        onClick={onClick(props.data[index].lottieUrl)}
-      >
+      return (
         <div
-          className={style.thumbnail}
-          style={{ backgroundImage: `url(${props.data[index].thumbnail})` }}
+          className={style['left-panel-item']}
+          style={cellStyle}
+          draggable={true}
+          onMouseEnter={onMouseEnter(props.data[index].lottieUrl)}
+          onMouseLeave={removePreview}
+          onDragStart={onDragStart(props.data[index].lottieUrl)}
+          onDragEnd={removePreview}
+          onClick={onClick(props.data[index].lottieUrl)}
         >
+          <div
+            className={style.thumbnail}
+            style={{ backgroundImage: `url(${props.data[index].thumbnail})` }}
+          ></div>
         </div>
-      </div>
-    );
-  }, [onClick, onDragStart, onMouseEnter, props.data, removePreview]);
+      );
+    },
+    [onClick, onDragStart, onMouseEnter, props.data, removePreview]
+  );
 
   return (
-    <div className={`${style['left-panel']} ${props.className}`} ref={wrapperRef}>
+    <div
+      className={`${style['left-panel']} ${props.className}`}
+      ref={wrapperRef}
+    >
       <Grid
         width={184}
         height={height}
@@ -111,7 +152,11 @@ export default function LeftPanel(props) {
       >
         {Cell}
       </Grid>
-      <div className={style.preview} ref={previewRef} style={{ display: `${previewVisible ? 'block' : 'none'}` }}></div>
+      <div
+        className={style.preview}
+        ref={previewRef}
+        style={{ display: `${previewVisible ? 'block' : 'none'}` }}
+      ></div>
     </div>
   );
 }

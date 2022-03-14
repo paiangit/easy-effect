@@ -4,8 +4,8 @@ import style from './RightArea.module.less';
 
 const RightArea: FC<{}> = () => {
   return (
-    <div className={ style['right-area'] }>
-      <AnimationSetting/>
+    <div className={style['right-area']}>
+      <AnimationSetting />
     </div>
   );
 };

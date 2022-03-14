@@ -4,7 +4,7 @@ import FullPage from './FullPage';
 function FullPageLoading() {
   return (
     <FullPage>
-      <Spin/>
+      <Spin />
     </FullPage>
   );
 }

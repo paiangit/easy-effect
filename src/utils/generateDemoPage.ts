@@ -1,4 +1,8 @@
-export default function generateDemoPage(animationData, animationStyle, backgroundConfig) {
+export default function generateDemoPage(
+  animationData,
+  animationStyle,
+  backgroundConfig
+) {
   /* eslint-disable no-useless-escape */
   return `
     <!DOCTYPE html>
@@ -55,4 +59,4 @@ export default function generateDemoPage(animationData, animationStyle, backgrou
       </body>
     </html>
   `;
-};
+}

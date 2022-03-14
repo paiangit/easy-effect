@@ -17,7 +17,7 @@ export default function EditorPage() {
           <LeftOutlined />
         </a>
         <div className={style.header}>
-          <Header/>
+          <Header />
         </div>
         <div className={style.body}>
           <LeftArea></LeftArea>

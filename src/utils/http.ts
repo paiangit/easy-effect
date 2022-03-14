@@ -1,6 +1,7 @@
 export default function http(url: string) {
   return new Promise((resolve, reject) => {
-    window.fetch(url)
+    window
+      .fetch(url)
       .then(async response => {
         const data = await response.json();
 

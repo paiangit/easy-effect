@@ -10,33 +10,29 @@ const EditorPage = lazy(() => import('./features/editor/EditorPage'));
 function App() {
   const routes = {
     path: '/',
-    element: <MainLayout/>,
+    element: <MainLayout />,
     children: [
       {
         path: '*',
-        element: <Navigate to="/404"/>,
+        element: <Navigate to="/404" />,
       },
       {
         path: '/',
-        element: <MainPage/>,
+        element: <MainPage />,
       },
       {
         path: '404',
-        element: <NotFoundPage/>,
+        element: <NotFoundPage />,
       },
       {
         path: 'editor',
-        element: <EditorPage/>,
+        element: <EditorPage />,
       },
     ],
   };
-  const routing = useRoutes([routes])
+  const routing = useRoutes([routes]);
 
-  return (
-    <Suspense fallback={<FullPageLoading/>}>
-      { routing }
-    </Suspense>
-  );
+  return <Suspense fallback={<FullPageLoading />}>{routing}</Suspense>;
 }
 
 export default App;

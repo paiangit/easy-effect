@@ -1,6 +1,9 @@
 import { useEffect, useRef } from 'react';
 
-export default function useDocumentTitle(title: string, keepOnUnmount: boolean = true) {
+export default function useDocumentTitle(
+  title: string,
+  keepOnUnmount: boolean = true
+) {
   // useRef(xxx).current可以在组件的整个生命周期中保证这个值是xxx传入useRef时的初始值，可以免受xxx更新带来的影响
   const oldTitle = useRef(document.title).current;
 

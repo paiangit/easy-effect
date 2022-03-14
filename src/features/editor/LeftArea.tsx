@@ -13,15 +13,26 @@ export default function LeftArea() {
     setTemplates(data[0].children[0].children);
   }, [data]);
 
-  const handleActiveIndexChange = useCallback((index) => {
-    setActiveIndex(index);
-    setTemplates(data[index].children[0].children);
-  }, [data]);
+  const handleActiveIndexChange = useCallback(
+    index => {
+      setActiveIndex(index);
+      setTemplates(data[index].children[0].children);
+    },
+    [data]
+  );
 
   return (
-    <div className={ style['left-area'] }>
-      <LeftAreaNav data={data} activeIndex={activeIndex} onActiveIndexChange={handleActiveIndexChange}></LeftAreaNav>
-      <LeftPanel className={style.panel} data={templates} activeIndex={activeIndex}></LeftPanel>
+    <div className={style['left-area']}>
+      <LeftAreaNav
+        data={data}
+        activeIndex={activeIndex}
+        onActiveIndexChange={handleActiveIndexChange}
+      ></LeftAreaNav>
+      <LeftPanel
+        className={style.panel}
+        data={templates}
+        activeIndex={activeIndex}
+      ></LeftPanel>
     </div>
   );
 }

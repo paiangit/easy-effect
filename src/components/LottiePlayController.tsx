@@ -4,15 +4,21 @@
 import { FC, useEffect, useState, useRef, useCallback } from 'react';
 import { Button, Progress } from 'antd';
 import classNames from 'classnames';
-import { AnimationItem, AnimationDirection } from 'lottie-web/build/player/lottie_light';
+import {
+  AnimationItem,
+  AnimationDirection,
+} from 'lottie-web/build/player/lottie_light';
 import style from './LottiePlayController.module.less';
 
 // 速度增减的步长
 // const speedStepLength = 0.5;
 
-const LottiePlayController: FC<{ animation: AnimationItem, width: number }> = ({ animation, width }) => {
+const LottiePlayController: FC<{ animation: AnimationItem; width: number }> = ({
+  animation,
+  width,
+}) => {
   const [isPaused, setIsPaused] = useState<boolean>();
-  const [loop, setLoop] = useState<boolean|number>();
+  const [loop, setLoop] = useState<boolean | number>();
   const [percent, setPercent] = useState<number>(0);
   const directionRef = useRef<AnimationDirection>(1);
   // const speedRef = useRef<number>(1);
@@ -34,7 +40,9 @@ const LottiePlayController: FC<{ animation: AnimationItem, width: number }> = ({
   const stop = useCallback(() => {
     if (!animation) return;
 
-    animation.goToAndStop(directionRef.current === 1 ? 0 : animation.totalFrames);
+    animation.goToAndStop(
+      directionRef.current === 1 ? 0 : animation.totalFrames
+    );
     setIsPaused(true);
   }, [animation]);
 
@@ -70,12 +78,15 @@ const LottiePlayController: FC<{ animation: AnimationItem, width: number }> = ({
   // };
 
   // 跳转到某位置并停止播放
-  const goToAndStop = useCallback((n, isFrame) => {
-    if (!animation) return;
+  const goToAndStop = useCallback(
+    (n, isFrame) => {
+      if (!animation) return;
 
-    animation.goToAndStop(n, isFrame);
-    setIsPaused(true);
-  }, [animation]);
+      animation.goToAndStop(n, isFrame);
+      setIsPaused(true);
+    },
+    [animation]
+  );
 
   // const toggleDirection = () => {
   //   if (!animation) return;
@@ -107,21 +118,24 @@ const LottiePlayController: FC<{ animation: AnimationItem, width: number }> = ({
     animation && setLoop(animation.loop);
   }, [animation]);
 
-  const onEnterframe = useCallback((e) => {
-    // console.log('enterFrame', e);
-    if (directionRef.current === 1) {
-      setPercent(Math.floor(e.currentTime * 100 / e.totalTime));
+  const onEnterframe = useCallback(
+    e => {
+      // console.log('enterFrame', e);
+      if (directionRef.current === 1) {
+        setPercent(Math.floor((e.currentTime * 100) / e.totalTime));
 
-      if (e.currentTime >= e.totalTime - 1 && !animation.loop) {
-        stop();
+        if (e.currentTime >= e.totalTime - 1 && !animation.loop) {
+          stop();
+        }
+      } else {
+        setPercent(100 - Math.floor((e.currentTime * 100) / e.totalTime));
+        if (e.currentTime <= 1 && !animation.loop) {
+          goToAndStop(animation.totalFrames, true);
+        }
       }
-    } else {
-      setPercent(100 - Math.floor(e.currentTime * 100 / e.totalTime));
-      if (e.currentTime <= 1 && !animation.loop) {
-        goToAndStop(animation.totalFrames, true);
-      }
-    }
-  }, [animation, goToAndStop, stop]);
+    },
+    [animation, goToAndStop, stop]
+  );
 
   // 当不循环时，在播放结束时，跳转至动效开头，并切换暂停按钮状态为播放，便于直接点击播放按钮再次播放，增强体验
   useEffect(() => {
@@ -139,19 +153,34 @@ const LottiePlayController: FC<{ animation: AnimationItem, width: number }> = ({
   return (
     <div className={style['lottie-player-controller']} style={{ width: width }}>
       <div className={style['percent-wrap']}>
-        <Progress percent={percent} showInfo={false} size="small" strokeColor={'#877d7d'} strokeWidth={1}/>
+        <Progress
+          percent={percent}
+          showInfo={false}
+          size="small"
+          strokeColor={'#877d7d'}
+          strokeWidth={1}
+        />
       </div>
       <div className={style.buttons}>
-        <Button
-          type="link"
-          className={style.button}
-          onClick={togglePause}
-        >{isPaused ? <span title="播放" className={classNames('iconfont', 'icon-bofang')} /> : <span title="暂停" className={classNames('iconfont', 'icon-zanting')}></span>}</Button>
-        <Button
-          type="link"
-          className={style.button}
-          onClick={stop}
-        ><span title="停止" className={classNames('iconfont', 'icon-tingzhi')} /></Button>
+        <Button type="link" className={style.button} onClick={togglePause}>
+          {isPaused ? (
+            <span
+              title="播放"
+              className={classNames('iconfont', 'icon-bofang')}
+            />
+          ) : (
+            <span
+              title="暂停"
+              className={classNames('iconfont', 'icon-zanting')}
+            ></span>
+          )}
+        </Button>
+        <Button type="link" className={style.button} onClick={stop}>
+          <span
+            title="停止"
+            className={classNames('iconfont', 'icon-tingzhi')}
+          />
+        </Button>
         {/* <Button
           type="link"
           className={style.button}
@@ -176,8 +205,18 @@ const LottiePlayController: FC<{ animation: AnimationItem, width: number }> = ({
           type="link"
           className={style.button}
           onClick={() => toggleLoop()}
-        >{loop ? <span title="不循环" className={classNames('iconfont', 'icon-buxunhuan')}></span>
-          : <span title="循环" className={classNames('iconfont', 'icon-xunhuan')} />}
+        >
+          {loop ? (
+            <span
+              title="不循环"
+              className={classNames('iconfont', 'icon-buxunhuan')}
+            ></span>
+          ) : (
+            <span
+              title="循环"
+              className={classNames('iconfont', 'icon-xunhuan')}
+            />
+          )}
         </Button>
       </div>
     </div>

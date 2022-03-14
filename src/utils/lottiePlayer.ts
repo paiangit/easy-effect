@@ -78,19 +78,23 @@ class AnimationsPlayer {
   /**
    * 指定所有/某一个动效跳转到指定的位置并停止播放
    */
-  public goToAndPlay(value: number, isFrame: boolean, animationName?: string): void {
+  public goToAndPlay(
+    value: number,
+    isFrame: boolean,
+    animationName?: string
+  ): void {
     const regAnimations = this.getRegisteredAnimations(animationName);
 
     if (regAnimations.length) {
-      regAnimations.forEach((regAnimation) => {
+      regAnimations.forEach(regAnimation => {
         const { playSpeed, animationData } = regAnimation;
         const { ip, op } = animationData;
         let destValue;
         if (isFrame) {
-          destValue = value < ip ? ip : (value > op ? op : value);
+          destValue = value < ip ? ip : value > op ? op : value;
         } else {
-          const duration = regAnimation.getDuration() * 1000 / playSpeed;
-          destValue = value < 0 ? 0 : (value > duration ? duration : value);
+          const duration = (regAnimation.getDuration() * 1000) / playSpeed;
+          destValue = value < 0 ? 0 : value > duration ? duration : value;
         }
         regAnimation.goToAndPlay(destValue);
       });
@@ -100,7 +104,11 @@ class AnimationsPlayer {
   /**
    * 指定所有/某一个动效跳转到指定的位置并停止播放
    */
-  public goToAndStop(value: number, isFrame: boolean, animationName?: string): void {
+  public goToAndStop(
+    value: number,
+    isFrame: boolean,
+    animationName?: string
+  ): void {
     // @ts-ignore
     LottiePlayer.goToAndStop(value, isFrame, animationName);
     this.setDisplayStatus(animationName, 'block');
@@ -116,14 +124,21 @@ class AnimationsPlayer {
   /**
    * 设置所有/某一个动效的播放方向
    */
-  public setDirection(direction: AnimationDirection, animationName?: string): void {
+  public setDirection(
+    direction: AnimationDirection,
+    animationName?: string
+  ): void {
     LottiePlayer.setDirection(direction, animationName);
   }
 
   /**
    * 查找DOM元素上具有class“lottie”或“bodymovin”的元素
    */
-  public searchAnimations(animationData?: any, standalone?: boolean, renderer?: string): void {
+  public searchAnimations(
+    animationData?: any,
+    standalone?: boolean,
+    renderer?: string
+  ): void {
     LottiePlayer.searchAnimations(animationData, standalone, renderer);
   }
 
@@ -139,7 +154,7 @@ class AnimationsPlayer {
 
     // 销毁同名动效
     if (regAnimations.length) {
-      regAnimations.forEach((regAnimation) => {
+      regAnimations.forEach(regAnimation => {
         regAnimation.destroy();
       });
     }
@@ -148,7 +163,7 @@ class AnimationsPlayer {
     const animation = this.loadAnimation(options);
     animation.setSubframe(useSubFrames);
     animation.setSpeed(speed);
-    animation.addEventListener('enterFrame', (e) => {
+    animation.addEventListener('enterFrame', e => {
       if (e.currentTime === e.totalTime - 1) {
         setTimeout(() => {
           this.setDisplayStatus(options.name, 'none');
@@ -187,7 +202,9 @@ class AnimationsPlayer {
    * @returns {AnimationItem}
    * @memberof AnimationsPlayer
    */
-  public loadAnimation(params: AnimationConfigWithPath | AnimationConfigWithData): AnimationItem {
+  public loadAnimation(
+    params: AnimationConfigWithPath | AnimationConfigWithData
+  ): AnimationItem {
     return LottiePlayer.loadAnimation(params);
   }
 
@@ -225,8 +242,8 @@ class AnimationsPlayer {
       nameArr = name;
     }
     const result = [];
-    animations.forEach((animation) => {
-      nameArr.forEach((nm) => {
+    animations.forEach(animation => {
+      nameArr.forEach(nm => {
         if (animation.name === nm) {
           result.push(animation);
         }

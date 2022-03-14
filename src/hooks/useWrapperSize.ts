@@ -13,14 +13,14 @@ export default function useWrapperSize() {
     const paddingBottom = (computedStyle.paddingTop || '').replace('px', '');
 
     setWidth(
-      wrapperRef.current.getBoundingClientRect().width
-      - (+paddingLeft || 0)
-      - (+paddingRight || 0)
+      wrapperRef.current.getBoundingClientRect().width -
+        (+paddingLeft || 0) -
+        (+paddingRight || 0)
     );
     setHeight(
-      wrapperRef.current.getBoundingClientRect().height
-      - (+paddingTop || 0)
-      - (+paddingBottom || 0)
+      wrapperRef.current.getBoundingClientRect().height -
+        (+paddingTop || 0) -
+        (+paddingBottom || 0)
     );
   }, []);
 

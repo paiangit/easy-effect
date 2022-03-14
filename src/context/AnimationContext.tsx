@@ -1,8 +1,11 @@
-import React, {ReactNode, useState, useRef, MutableRefObject } from 'react';
+import React, { ReactNode, useState, useRef, MutableRefObject } from 'react';
 import { AnimationItem } from 'lottie-web/build/player/lottie_light';
 import { AnimationStyle } from '~components/Draggable';
 
-export type Animation = AnimationItem & {animationData?: any, wrapper?: HTMLElement};
+export type Animation = AnimationItem & {
+  animationData?: any;
+  wrapper?: HTMLElement;
+};
 export interface BackGroundConfig {
   width: number;
   height: number;
@@ -10,16 +13,17 @@ export interface BackGroundConfig {
 }
 
 const AnimationContext = React.createContext<
-  {
-    animation: Animation;
-    setAnimation: (animation: Animation) => void;
-    animationRef: MutableRefObject<HTMLDivElement | undefined>;
-    animationWrapperRef: MutableRefObject<HTMLDivElement | undefined>;
-    animationStyle: AnimationStyle;
-    setAnimationStyle: (animationStyle: AnimationStyle) => void;
-    backgroundConfig: BackGroundConfig,
-    setBackgroundConfig: (backgroundConfig: BackGroundConfig) => void;
-  } | undefined
+  | {
+      animation: Animation;
+      setAnimation: (animation: Animation) => void;
+      animationRef: MutableRefObject<HTMLDivElement | undefined>;
+      animationWrapperRef: MutableRefObject<HTMLDivElement | undefined>;
+      animationStyle: AnimationStyle;
+      setAnimationStyle: (animationStyle: AnimationStyle) => void;
+      backgroundConfig: BackGroundConfig;
+      setBackgroundConfig: (backgroundConfig: BackGroundConfig) => void;
+    }
+  | undefined
 >(undefined);
 
 AnimationContext.displayName = 'AnimationContext';
@@ -43,18 +47,21 @@ export const AnimationProvider = ({ children }: { children: ReactNode }) => {
   });
 
   return (
-    <AnimationContext.Provider children={children} value={{
-      animation,
-      setAnimation, // 设置画板区域的动效实例
-      animationRef,
-      animationWrapperRef,
-      animationStyle,
-      setAnimationStyle, // 设置画板区包裹动效的可拖拽容器的样式（包括位置、大小、旋转角度等）
-      backgroundConfig,
-      setBackgroundConfig, // 设置动效背景样式（包括大小、背景色等）
-    }}/>
+    <AnimationContext.Provider
+      children={children}
+      value={{
+        animation,
+        setAnimation, // 设置画板区域的动效实例
+        animationRef,
+        animationWrapperRef,
+        animationStyle,
+        setAnimationStyle, // 设置画板区包裹动效的可拖拽容器的样式（包括位置、大小、旋转角度等）
+        backgroundConfig,
+        setBackgroundConfig, // 设置动效背景样式（包括大小、背景色等）
+      }}
+    />
   );
-}
+};
 
 export const useAnimation = () => {
   const context = React.useContext(AnimationContext);
@@ -64,4 +71,4 @@ export const useAnimation = () => {
   }
 
   return context;
-}
+};
