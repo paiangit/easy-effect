@@ -9,12 +9,20 @@
   padding: 0 @padding;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 
   :global(.anticon-arrow-right) {
     margin-left: 0;
   }
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 740px;
+  margin: 0 auto;
 }
 
 .logo {
@@ -24,7 +32,7 @@
 }
 
 .brief {
-  margin-top: -60px;
+  margin-top: 30px;
   margin-bottom: 8px;
   font-size: 46px;
   font-weight: bold;
@@ -52,7 +60,8 @@
 
 @media(max-width: 1024px) {
   .brief {
-    font-size: 30px;
+    font-size: 28px;
+    font-weight: 500;
   }
   .description {
     font-size: 13px;

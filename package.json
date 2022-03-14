@@ -30,7 +30,7 @@
     "test:coverage": "craco test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "predeploy": "pnpm build",
-    "deploy": "gh-pages -d build -r git@github.com:paiangit/paiangit.github.io.git -b main"
+    "deploy": "pnpm predeploy && gh-pages -d build -r git@github.com:paiangit/paiangit.github.io.git -b main"
   },
   "eslintConfig": {
     "extends": [
