@@ -1,20 +1,24 @@
-@import '~styles/index.less';
+@import "~styles/index.less";
 
 .editor-center-area {
   flex: 1;
   margin-left: 200px;
 }
+
 .toolbar {
   text-align: center;
   padding: 5px;
 }
-.canvas{
+
+.canvas {
   position: relative;
   width: 100%;
   height: calc(100% - 5px);
 }
+
 .canvas-content {
   @gap: 16px;
+
   position: absolute;
   left: @gap;
   top: @gap;
@@ -22,4 +26,3 @@
   bottom: @gap;
   overflow-y: auto;
 }
-
