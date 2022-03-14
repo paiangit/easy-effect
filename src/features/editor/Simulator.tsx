@@ -78,8 +78,8 @@ const Simulator: FC<{}> = () => {
   return (
     <div className={style.simulator}>
       { !animation &&
-        <div className={style.tip} style={{width: Math.min(backgroundConfig.width, 700)}}>
-          <p className={style['tip-text']}>请从左侧列表中拖入动效到下面画板中编辑</p>
+        <div className={style.tip} style={{width: Math.min(backgroundConfig.width, 480)}}>
+          <p className={style['tip-text']}>请从左侧列表中挑选动效到下面画板中编辑</p>
         </div> }
       <div
         ref={animationWrapperRef}
@@ -99,7 +99,7 @@ const Simulator: FC<{}> = () => {
           <div ref={animationRef} className={style.animation}></div>
         </Draggable>
       </div>
-      <LottiePlayerController animation={animation} width={Math.min(backgroundConfig.width, 700)}/>
+      <LottiePlayerController animation={animation} width={Math.min(backgroundConfig.width, 480)}/>
     </div>
   );
 }

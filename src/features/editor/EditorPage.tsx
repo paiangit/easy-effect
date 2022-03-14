@@ -1,3 +1,4 @@
+import { LeftOutlined } from '@ant-design/icons';
 import LeftArea from './LeftArea';
 import CenterArea from './CenterArea';
 import RightArea from './RightArea';
@@ -12,6 +13,9 @@ export default function EditorPage() {
   return (
     <AnimationProvider>
       <div className={style['editor-page']}>
+        <a className={style.back} href="/">
+          <LeftOutlined />
+        </a>
         <div className={style.header}>
           <Header/>
         </div>

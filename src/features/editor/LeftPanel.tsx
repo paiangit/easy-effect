@@ -15,28 +15,29 @@ export default function LeftPanel(props) {
   const rowCount = Math.ceil(props.data.length / 2);
   const lottieName = 'preview-template';
 
-  const destroyLottie = () => lottiePlayer.destroy(lottieName);
+  const destroyLottie = useCallback(() => lottiePlayer.destroy(lottieName), []);
 
-  const onMouseEnter = (lottieUrl) => {
+  const onMouseEnter = useCallback((lottieUrl) => {
     // console.log('mouseenter');
     return debounce(async () => {
+      if (window.innerWidth <= 1024) return;
       destroyLottie();
       await fetchAndPlayLottie(lottieUrl, { container: previewRef.current, name: lottieName });
       setPreviewVisible(true);
     }, 20);
-  };
+  }, [destroyLottie]);
 
-  const removePreview = debounce(() => {
+  const removePreview = useCallback(() => debounce(() => {
     // console.log('removePreview');
     destroyLottie();
     setPreviewVisible(false);
-  }, 20);
+  }, 20), [destroyLottie, setPreviewVisible]);
 
-  const onDragStart = (lottieUrl) => {
+  const onDragStart = useCallback((lottieUrl) => {
     return (e) => {
       e.dataTransfer.setData('lottieUrl', lottieUrl);
     };
-  };
+  }, []);
 
   const onMouseMove = useCallback((e) => {
     const x = e.clientX;
@@ -59,7 +60,7 @@ export default function LeftPanel(props) {
 
   const onClick = useCallback((lottieUrl) => {
     return async () => {
-      console.log(lottieUrl);
+      // console.log(lottieUrl);
       if (!lottieUrl) return;
       const res = await fetchAndPlayLottie(lottieUrl, { container: animationRef.current, autoplay: false, name: 'edit-animation' });
       res.animation && setAnimation(res.animation);
@@ -73,7 +74,7 @@ export default function LeftPanel(props) {
     };
   }, [animationRef, animationStyle, setAnimation, setAnimationStyle, animationWrapperRef]);
 
-  const Cell = (cellProps) => {
+  const Cell = useCallback((cellProps) => {
     const { rowIndex, columnIndex } = cellProps;
     const cellStyle = cellProps.style;
     const index = Math.min(rowIndex * 2 + columnIndex, props.data.length - 1);
@@ -96,7 +97,7 @@ export default function LeftPanel(props) {
         </div>
       </div>
     );
-  };
+  }, [onClick, onDragStart, onMouseEnter, props.data, removePreview]);
 
   return (
     <div className={`${style['left-panel']} ${props.className}`} ref={wrapperRef}>
