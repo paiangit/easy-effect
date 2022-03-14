@@ -22,6 +22,7 @@ specifiers:
   cross-env: ^7.0.3
   dayjs: ^1.10.8
   esbuild-loader: ^2.18.0
+  eslint-config-prettier: ^8.5.0
   file-saver: ^2.0.5
   gh-pages: ^3.2.3
   husky: ^7.0.4
@@ -30,6 +31,7 @@ specifiers:
   lodash-es: ^4.17.21
   lottie-web: ^5.9.1
   postcss-less: ^6.0.0
+  prettier: ^2.5.1
   react: ^17.0.2
   react-dom: ^17.0.2
   react-error-boundary: ^3.1.4
@@ -79,10 +81,12 @@ devDependencies:
   craco-less: 2.0.0_66b49c99af659d7c23050d0db8706453
   cross-env: 7.0.3
   esbuild-loader: 2.18.0
+  eslint-config-prettier: 8.5.0
   gh-pages: 3.2.3
   husky: 7.0.4
   lint-staged: 12.3.5
   postcss-less: 6.0.0
+  prettier: 2.5.1
   speed-measure-webpack-plugin: 1.5.0
   stylelint: 14.5.3
   stylelint-config-standard: 25.0.0_stylelint@14.5.3
@@ -5014,6 +5018,13 @@ packages:
       source-map: 0.6.1
     dev: false
 
+  /eslint-config-prettier/8.5.0:
+    resolution: {integrity: sha512-obmWKLUNCnhtQRKc+tmnYuQl0pFU1ibYJQ5BGhTVB08bHe9wC8qUeG7c08dj9XX+AuPj1YSGSQIHl1pnDHZR0Q==}
+    hasBin: true
+    peerDependencies:
+      eslint: '>=7.0.0'
+    dev: true
+
   /eslint-config-react-app/7.0.0_41379bc407ff2da195916b200f9a884e:
     resolution: {integrity: sha512-xyymoxtIt1EOsSaGag+/jmcywRuieQoA2JbPCjnw9HukFj9/97aGPoZVFioaotzk1K5Qt9sHO5EutZbkrAXS0g==}
     engines: {node: '>=14.0.0'}
@@ -8838,6 +8849,12 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
     dev: false
+
+  /prettier/2.5.1:
+    resolution: {integrity: sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: true
 
   /pretty-bytes/5.6.0:
     resolution: {integrity: sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==}

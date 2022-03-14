@@ -67,10 +67,12 @@
     "craco-less": "^2.0.0",
     "cross-env": "^7.0.3",
     "esbuild-loader": "^2.18.0",
+    "eslint-config-prettier": "^8.5.0",
     "gh-pages": "^3.2.3",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.5",
     "postcss-less": "^6.0.0",
+    "prettier": "^2.5.1",
     "speed-measure-webpack-plugin": "^1.5.0",
     "stylelint": "^14.5.3",
     "stylelint-config-standard": "^25.0.0",
@@ -79,7 +81,18 @@
     "webpack-bundle-analyzer": "^4.5.0"
   },
   "lint-staged": {
-    "*.css": "stylelint --fix --cache",
-    "*.less": "stylelint --fix --cache --custom-syntax postcss-less"
+    "*.css": [
+      "stylelint --fix --cache",
+      "git add"
+    ],
+    "*.less": [
+      "stylelint --fix --cache --custom-syntax postcss-less",
+      "git add"
+    ],
+    "*.{tsx,ts,js}": [
+      "eslint --fix --cache",
+      "prettier --write",
+      "git add"
+    ]
   }
 }
