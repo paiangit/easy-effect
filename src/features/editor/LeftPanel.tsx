@@ -27,11 +27,11 @@ export default function LeftPanel(props) {
     }, 20);
   }, [destroyLottie]);
 
-  const removePreview = useCallback(() => debounce(() => {
+  const removePreview = debounce(useCallback(() => {
     // console.log('removePreview');
     destroyLottie();
     setPreviewVisible(false);
-  }, 20), [destroyLottie, setPreviewVisible]);
+  }, [destroyLottie]), 20);
 
   const onDragStart = useCallback((lottieUrl) => {
     return (e) => {
