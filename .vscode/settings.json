@@ -1,0 +1,6 @@
+{
+  "editor.codeActionsOnSave": {
+    // 保存时stylelint插件自动修正样式格式
+    "source.fixAll.stylelint": true
+  }
+}
