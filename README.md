@@ -2,12 +2,16 @@
   <a href="https://paiangit.github.io">
     <img src="https://paiangit.github.io/logo192.png" width="80px">
   </a>
-  <h1 align="center">Easy Effect</h1>
+  <h1 align="center" style="margin-top: -20px;">Easy Effect</h1>
 </p>
+
+<br/>
 
 ## 🖖 Introduction
 
 Easy Effect is a WYSIWYG animation editor based on Lottie.
+
+<br/>
 
 ## ✨ Feature
 
@@ -27,6 +31,8 @@ The output (a JSON data file) is cross-platform, you can play it on Web, iOS, An
 
 The project is fullly opensource and free. You can use it any where. 
 
+<br/>
+
 ## 📦 Use
 
 See: [https://paiangit.github.io](https://paiangit.github.io/)
@@ -43,21 +49,13 @@ See: [https://paiangit.github.io](https://paiangit.github.io/)
 
 5. After finishing all the editing steps, you can click the download button to get the result. The result is an lottie JSON file, which contains all the infomation of the animation. And in the zip file you download, there is also a file named demo.html. You can just double click it to view the animation in a webpage easily.
 
+<br/>
+
 ## 🤝 Contributing
 
-In the project directory, you can run:
+Please make sure to read the [Contributing Guide](https://github.com/paiangit/easy-effect/blob/main/.github/contributing.md) before making a pull request. 
 
-### `pnpm start`
-
-Runs the app in the development mode.
-
-### `pnpm test`
-
-Launches the test runner in the interactive watch mode.
-
-### `pnpm run build`
-
-Builds the app for production to the `build` folder.
+<br/>
 
 ## 📃 License
 
