@@ -2,10 +2,7 @@
 @rotate-size: 16px;
 @border-size: 1px;
 
-/* stylelint-disable-next-line block-no-empty */
-.draggable {}
-
-// 未选中时
+/* 未选中时 */
 .handle {
   display: none;
   position: absolute;
@@ -13,7 +10,8 @@
   width: @handle-size;
   height: @handle-size;
   background: #fff;
-  // 注意禁止鼠标选中控制点元素，不然拖拽事件可能会因此被中断
+
+  /* 注意禁止鼠标选中控制点元素，不然拖拽事件可能会因此被中断 */
   /* stylelint-disable-next-line */
   user-select: none;
   margin-top: (-@handle-size/2) !important;
@@ -23,7 +21,7 @@
   box-shadow: 0 0 2px 0 rgba(86 90 98 / 20%);
 }
 
-// 选中时
+/* 选中时 */
 .selected {
   .handle {
     display: inline-block;
@@ -97,7 +95,7 @@
 }
 
 .handle-rotate {
-  // 暂时先隐藏旋转按钮
+  /* 暂时先隐藏旋转按钮 */
   display: none !important;
   cursor: pointer;
   position: absolute;

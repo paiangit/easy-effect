@@ -10,7 +10,7 @@ import React, {
   KeyboardEvent,
 } from 'react';
 import classnames from 'classnames';
-import './Draggable.less';
+import styles from './Draggable.module.less';
 
 export interface AnimationStyle {
   left: number;
@@ -336,24 +336,27 @@ const Draggable: FC<DraggableProps> = ({
 
   return (
     <div
-      className={`draggable ${selected ? 'selected' : ''}`}
+      className={`${selected ? 'selected' : ''}`}
       style={style}
       onClick={onClick}
       onKeyUp={onKeyUp}
     >
       {canDrag ? (
         <div
-          className="draggable-item"
+          className={styles['draggable-item']}
           style={animationStyle}
           onMouseDown={e => onMouseDown('move', e)}
           onMouseMove={onMouseMove}
           onMouseUp={onMouseUp}
         >
-          <div className="draggable-item-child">{children}</div>
+          <div className={styles['draggable-item-child']}>{children}</div>
           {canDrag &&
             handles.map(item => (
               <div
-                className={classnames('handle', `handle-${item}`)}
+                className={classnames(
+                  styles['handle'],
+                  styles[`handle-${item}`]
+                )}
                 onMouseDown={(e: React.MouseEvent<HTMLElement>) =>
                   onMouseDown(item as HandleType, e)
                 }
@@ -362,7 +365,7 @@ const Draggable: FC<DraggableProps> = ({
             ))}
         </div>
       ) : (
-        <div className="draggable-item" style={animationStyle}>
+        <div className={styles['draggable-item']} style={animationStyle}>
           {children}
         </div>
       )}
