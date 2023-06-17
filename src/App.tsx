@@ -13,10 +13,6 @@ function App() {
     element: <MainLayout />,
     children: [
       {
-        path: '*',
-        element: <Navigate to="/404" />,
-      },
-      {
         path: '/',
         element: <MainPage />,
       },
@@ -27,6 +23,10 @@ function App() {
       {
         path: 'editor',
         element: <EditorPage />,
+      },
+      {
+        path: '*',
+        element: <Navigate to="/404" />,
       },
     ],
   };
